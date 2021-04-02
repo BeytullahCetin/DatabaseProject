@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  flex-direction: row;
+  flex-wrap: wrap;
+  display: flex;
+  padding: 2%;
+}
+
+.main-item {
+  padding: 2%;
+  line-height: 1.5;
+  text-align: left;
+  flex: 1;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.label {
+  text-align: right;
+}
+
+.main-item h2 {
+  color: #da4167;
+}
+
+.main-item p {
+  margin-top: 0.5rem;
+}
