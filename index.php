@@ -61,5 +61,5 @@ include "php/header.php";
   </div>
   <div style="height: 100px;"></div>
   <?php
-  include "footer.php";
+    include "php/footer.php";
   ?>
