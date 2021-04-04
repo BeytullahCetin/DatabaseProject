@@ -60,3 +60,6 @@ include "php/header.php";
     </div>
   </div>
   <div style="height: 100px;"></div>
+  <?php
+    include "php/footer.php";
+  ?>
