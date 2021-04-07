@@ -1,7 +1,8 @@
 <?php
-include "header.php";
+//include "header.php";
 ?>
 <link rel="stylesheet" href="../css/login.css">
+
 <div class="hero">
     <div class="form-box">
 
@@ -13,7 +14,7 @@ include "header.php";
             <input type="text" class="input-field" name="userUsername" placeholder="Username" required>
             <input type="password" class="input-field" name="userPassword" placeholder="Password" required>
             <input type="checkbox" name="rememberMe" class="chechk-box" value=<span>Remember Me</span>
-            <button type="submit" class="submit-b" name="login-btn">Log-in</button><br><br>
+            <button type="submit" class="sub-button" name="login-btn">Log-in</button><br><br>
 
             <!--When wrong information write and alert raise-->
             <?php
@@ -41,8 +42,9 @@ include "header.php";
         <!--User check-in-->
         <?php
         if (isset($_POST['login-btn'])) {
-            $userUsername = $_POST['userUsername'];
-            $userPassword = md5($_POST['userPassword']);
+
+            $userUsername = htmlspecialchars($_POST['userUsername']);
+            $userPassword = md5(htmlspecialchars($_POST['userPassword']));
 
             // DB user check
             //$checkUserInDB = $db->prepare("SELECT * FROM usersinfo WHERE
@@ -88,3 +90,7 @@ include "header.php";
         } ?>
     </div>
 </div>
+
+<?php
+include "footer.php";
+?>

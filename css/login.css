@@ -88,7 +88,7 @@ h3 {
   background: transparent;
 }
 
-.submit-b {
+.sub-button {
   width: 65%;
   padding: 10px 30px;
   cursor: pointer;
@@ -115,8 +115,7 @@ span {
   font-size: 12px;
 }
 #log-in {
-  left: 50px;
-  margin: 5em 0;
+  margin: 10%;
 }
 #register {
   left: 450px;
