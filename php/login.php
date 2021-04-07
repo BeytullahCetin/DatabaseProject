@@ -37,7 +37,7 @@
 							</div>
 
 							<!-- USER LOG ACTIONS -->
-							<form action="login.php" class="signin-form">
+							<form action="login.php" class="signin-form" method="POST">
 								<div class="form-group mb-3">
 									<label class="label" for="name">Username</label>
 									<input type="text" class="form-control" name="userName" placeholder="Username" required>
@@ -67,6 +67,8 @@
 							<!-- USER CHECK IN DATABASE -->
 							<?php
 							if (isset($_POST['signInBtn'])) {
+								echo "THIS IS TEST FOR PHP";
+
 								$userUsername = htmlspecialchars($_POST['userName']);
 								$userPassword = md5(htmlspecialchars($_POST['userPassword']));
 
@@ -77,40 +79,40 @@
 								//    'userUsername' => $userUsername,
 								//    'userPassword' => $userPassword
 								//));
-								$int = $checkUserInDB->rowCount();
+								//$int = $checkUserInDB->rowCount();
 
 
 								// If user find, then int equals 1 and sessions stared
-								if ($int == 1) {
-									$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-									// Create sessions
-									// IT MUST BE EDIT !!!!!!!
-									$_SESSION['userID'] = $pullinfo['userID'];
-									$_SESSION['userUsername'] = $userUsername;
-									$_SESSION['userName'] = $pullinfo['userName'];
-									$_SESSION['userPassword'] = $_POST['userPassword'];
-									$_SESSION['userSurname'] = $pullinfo['userSurname'];
-									$_SESSION['userFlatno'] = $pullinfo['userFlatno'];
-									$_SESSION['userGSM'] = $pullinfo['userGSM'];
-									$_SESSION['userEmail'] = $pullinfo['userEmail'];
-								}
+								// if ($int == 1) {
+								// 	$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+								// 	// Create sessions
+								// 	// IT MUST BE EDIT !!!!!!!
+								// 	$_SESSION['userID'] = $pullinfo['userID'];
+								// 	$_SESSION['userUsername'] = $userUsername;
+								// 	$_SESSION['userName'] = $pullinfo['userName'];
+								// 	$_SESSION['userPassword'] = $_POST['userPassword'];
+								// 	$_SESSION['userSurname'] = $pullinfo['userSurname'];
+								// 	$_SESSION['userFlatno'] = $pullinfo['userFlatno'];
+								// 	$_SESSION['userGSM'] = $pullinfo['userGSM'];
+								// 	$_SESSION['userEmail'] = $pullinfo['userEmail'];
+								// }
 
 								// If user cannot find, then int equals 0 and print error 
-								elseif ($int == 0) {
-									$pullinfo2 = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-									$username = $pullinfo2['userUsername'];
-									$password = $pullinfo2['userPassword'];
-									if ($password != $userPassword) {
-										header("Location:../log.php?fail=password");
-										exit;
-									} elseif ($username != $userUsername) {
-										header("Location:../log.php?fail=username");
-										exit;
-									} else {
-										header("Location:../log.php?fail=fail");
-										exit;
-									}
-								}
+								// elseif ($int == 0) {
+								// 	$pullinfo2 = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+								// 	$username = $pullinfo2['userUsername'];
+								// 	$password = $pullinfo2['userPassword'];
+								// 	if ($password != $userPassword) {
+								// 		header("Location:../log.php?fail=password");
+								// 		exit;
+								// 	} elseif ($username != $userUsername) {
+								// 		header("Location:../log.php?fail=username");
+								// 		exit;
+								// 	} else {
+								// 		header("Location:../log.php?fail=fail");
+								// 		exit;
+								// 	}
+								// }
 							} ?>
 							<!-- USER CHECK IN DATABASE END -->
 						</div>
