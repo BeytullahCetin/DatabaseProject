@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.main-content {
+  display: flex;
+  padding: 4%;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+.main-item {
+  margin: -2% 25%;
+  padding: 2%;
+  line-height: 2;
+  text-align: center;
+  flex: 1;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
