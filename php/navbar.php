@@ -4,7 +4,7 @@
         All svg tags has been deleted. 
         All `href` changed to `#`
     --->
-
+    
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="container-fluid">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -25,10 +25,10 @@
                         <a class="nav-link" href="#">Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">NAME IS TEST</a>
+                        <a class="nav-link" href="#">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">NAME IS TEST</a>
+                        <a class="nav-link" href="#">Complaint</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">NAME IS TEST</a>
