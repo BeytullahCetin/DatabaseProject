@@ -31,10 +31,10 @@
                         <a class="nav-link" href="#">Complaint</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">NAME IS TEST</a>
+                        <a class="nav-link" href="#">TESTER</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">NAME IS TEST</a>
+                        <a class="nav-link" href="#">DEMO</a>
                     </li>
                 </ul>
 
