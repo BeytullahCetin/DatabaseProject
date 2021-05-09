@@ -86,11 +86,17 @@ include "header.php";
         </form>
 
 
+
+
+
+
         <!--User submit their own infoo to database. We check database and info in there-->
         <?php
 
         if (isset($_POST['submit'])) {
             $bilgilerim_id = $_SESSION['userID'];
+
+            // If user old password equals the input
             if ($_POST['passwordOld'] == $_SESSION['user']['password']) {
                 $newPass = $_POST['password'];
                 echo $newPass;
@@ -122,32 +128,53 @@ include "header.php";
                     'userEmail' => $_POST['userEmail'],
                     'registerDate' => $_SESSION['user']['registerDate']
                 ));
+
+                // WARNING 
+                // The user is registered in the SESSION with the password your login. When you update your profile (when the password is changed), 
+                // the old password remains in the SESSION.
+                // So, I killed the old SESSION and create a new SESSION in there where the user id the same as the old one.
                 if ($insert) {
-                    //echo "kayıt başarılı";
+                    $updatedUserID = $_SESSION['userID'];
+                    session_destroy();
+                    session_start();
+                    // DB updated user check 
+                    $checkUserInDB = $conn2->prepare("SELECT * FROM user WHERE userID = $updatedUserID");
+                    $checkUserInDB->execute();
+                    $int = $checkUserInDB->rowCount();
+
+                    // If user find, then int equals 1 and sessions stared
+                    if ($int == 1) {
+                        $pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+
+                        // Create sessions
+                        $_SESSION['userID'] = $pullinfo['userID'];
+                        $_SESSION['user'] = $pullinfo;
+                    }
                     Header("Location:profile.php?Updade=Successfull");
                     exit;
                 } else {
-                    //echo "kayıt başarısız";
                     Header("Location:profile.php?Updade=Fail");
                     exit;
                 }
             } else {
-                echo "<br><div class='alert alert-warning' role='alert'>Old Password is WRONG</div>";
+                echo "<br><div class='alert alert-warning' role='alert'>Old Password is Wrong</div>";
+                exit;
             }
         }
-
         ?>
 
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
         <?php
-        /*
-        if (isset($_GET['update'])) {
-            if ($_GET['update'] == "ok") {
+
+        if (isset($_GET['Updade'])) {
+            if ($_GET['Updade'] == "Successfull") {
                 echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
-            } elseif ($_GET['update'] == "no") {
-                echo "<br><div class='alert alert-warning' role='alert'>Update is Failed</div>";
+            } elseif ($_GET['Updade'] == "Fail") {
+                echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
+            } else {
+                echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
             }
-        }*/
+        }
         ?>
 
     </div>
