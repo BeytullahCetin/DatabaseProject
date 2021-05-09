@@ -47,20 +47,9 @@
 
                 <ul class="navbar-nav mb-2 mb-lg-0 justify-content-right">
                     <li class="nav-item">
-                        <a class="nav-link" onclick="logoutFun()">LOGOUT</a>
+                        <a class="nav-link" onclick="return confirm('Are you sure?')" href="logout.php">LOGOUT</a>
                     </li>
                 </ul>
-                <script>
-
-                    //location dont have function!! It conneted to the logout.php.
-                    function logoutFun() {
-                        var bol = confirm("ARE YOU SURE TO LOG OUT?");
-                        if (bol) {
-                            session_destroy();
-                            header("Location:login.php");
-                        }
-                    }
-                </script>
             </div>
         </div>
     </nav>
