@@ -14,7 +14,44 @@ include "header.php";
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                 <div class="accordion-body">
-                    Unpaid Dues
+                    <table class="table table-dark table-striped">
+                        <thead>
+                        <tr>
+                        <th>Action</th>
+                        <th>Door No</th>
+                        <th>Name - Surname</th>
+                        <th>Due Period</th>
+                        <th>Due Price</th>
+                        <th>Status</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <?php
+                        
+                        $query = "SELECT * FROM user u, userdue ud, due d, flat f WHERE u.userID = f.userID AND u.userID = ud.userID AND ud.dueID = d.dueID AND duePaymentDate IS NOT NULL";
+                        $result = mysqli_query($conn, $query);
+
+                        while($row = mysqli_fetch_assoc($result)){
+                        ?>
+
+                        <tr>
+                        <td><form action="payDueDB.php" method="POST">
+                        <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
+                        <input type="hidden" name="dueID" value="<?php echo $row['dueID']; ?>" >
+                        <input class="btn btn-success" type="submit" name="payDueSubmit" value="Pay">
+                        </form></td>
+                        <td><?php echo $row['doorNo']; ?></td>
+                        <td><?php echo $row['userName'] . " " . $row['userSurname']; ?></td>
+                        <td><?php echo $row['duePeriot']; ?></td>
+                        <td><?php echo $row['duePrice']; ?></td>
+                        <td>NOT PAID</td>
+                        </tr>
+
+
+                        <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -27,7 +64,34 @@ include "header.php";
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                 <div class="accordion-body">
-                    Paid Dues
+                <table class="table table-dark table-striped">
+                        <thead>
+                        <tr>
+                        <th>Door No</th>
+                        <th>Name - Surname</th>
+                        <th>Due Period</th>
+                        <th>Due Price</th>
+                        <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        
+                        $query = "SELECT * FROM user u, userdue ud, due d, flat f WHERE u.userID = f.userID AND u.userID = ud.userID AND ud.dueID = d.dueID AND duePaymentDate IS NULL";
+                        $result = mysqli_query($conn, $query);
+
+                        while($row = mysqli_fetch_assoc($result)){
+                        ?>
+                        <tr>
+                        <td><?php echo $row['doorNo']; ?></td>
+                        <td><?php echo $row['userName'] . $row['userSurname']; ?></td>
+                        <td><?php echo $row['duePeriot']; ?></td>
+                        <td><?php echo $row['duePrice']; ?></td>
+                        <td>PAID</td>
+                        </tr>
+                        <?php } ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
