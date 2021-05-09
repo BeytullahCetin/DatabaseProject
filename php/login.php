@@ -92,6 +92,7 @@ ob_start();
 									
 									// Create sessions
 									$_SESSION['userID'] = $pullinfo['userID'];
+									header("Location:home.php");
 								}
 
 								// If user cannot find, then int equals 0 and print error 
