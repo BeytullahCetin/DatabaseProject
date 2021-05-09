@@ -92,6 +92,7 @@ include "dbconn2.php";
 									
 									// Create sessions
 									$_SESSION['userID'] = $pullinfo['userID'];
+									$_SESSION['user'] = $pullinfo;
 									header("Location:home.php");
 								}
 
