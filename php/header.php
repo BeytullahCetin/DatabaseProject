@@ -1,11 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<?php
-session_start();
-ob_start();
-include "dbconn.php";
-?>
+
 
 <head>
     <meta charset="UTF-8">
