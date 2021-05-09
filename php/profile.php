@@ -7,83 +7,66 @@ include "header.php";
 
 <main class="main-content">
 
-    <!--User can see own info in there-->
-    <div class="card main-item" style="width: 20rem;">
-        <div class="card-header">
-            <b><i>PERSONAL INFORMATION</i></b>
-        </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-                <p>
-                    User Name
-                    <!-- php tags (php echo $_SESSION['userUsername'])-->
-                </p>
-            </li>
-            <li class="list-group-item">
-                <p>
-                    First
-                    <!--php echo $_SESSION['userName']-->
-                </p>
-            </li>
-            <li class="list-group-item">
-                <p>
-                    Last:
-                </p>
-            </li>
-            <li class="list-group-item">
-                <p>
-                    +90
-                </p>
-            </li>
-            <li class="list-group-item">
-                <p>
-                    Email
-                </p>
-            </li>
-            <li class="list-group-item">
-                <p>
-                    # Flat No
-                </p>
-            </li>
-        </ul>
-    </div>
-
     <!-- value include php files. (php echo $_SESSION['userUsername'])-->
     <div class="main-item">
         <form class="was-validated" action="account.php" method="POST">
+
             <div class="label">
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">User Name</span>
-                    <input type="text" name="userUsername" id="username" class="form-control" required value="User Name">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="text" id="username" name="username" value="<?php echo $_SESSION['user']['userName'] ?>" required>
+                    <label for="username">User Name</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">First</span>
-                    <input type="text" name="userName" id="name" class="form-control" required value="userName">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="text" id="userSurname" name="userSurname" value="<?php echo $_SESSION['user']['userSurname'] ?>" required>
+                    <label for="userSurname">User Surname</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">Last</span>
-                    <input type="text" name="userSurname" id="surname" class="form-control" required value="userSurname">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM" name="userGSM" value="<?php echo $_SESSION['user']['userGSM'] ?>" required>
+                    <label for="userGSM">User GSM - 1</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"> +90 </span>
-                    <input type="tel" name="userGSM" id="phone" class="form-control" required value="userGSM">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM2" name="userGSM2" value="<?php echo $_SESSION['user']['userGSM_2'] ?>" required>
+                    <label for="userGSM2">User GSM - 2</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1">userEmail</span>
-                    <input type="email" name="userEmail" id="mail" class="form-control" required value="userEmail@usermail.com">
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="mail" id="userEmail" name="userEmail" value="<?php echo $_SESSION['user']['userEmail'] ?>" required>
+                    <label for="userEmail">User Email</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"> Old Password</span>
-                    <input type="password" name="userPassword" id="passwordOld" class="form-control" required>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="password" id="passwordOld" name="passwordOld" placeholder="Old Password" required>
+                    <label for="passwordOld">User Old Password</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"> New Password</span>
-                    <input type="password" name="userPasswordNEW" id="passwordNew" class="form-control" required>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="password" id="passwordNew" name="passwordNew" placeholder="New Password" required>
+                    <label for="passwordNew">User New Password</label>
                 </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"> # userFlatno</span>
-                    <input type="int" name="userFlatno" id="userFlatno" class="form-control" required value="userFlatno">
+
+                <!-- SHOW USERS FLAT NUMBER -->
+                <?php
+                include "dbconn2.php";
+                $userIDinDB = $_SESSION['userID'];
+                $valueFlat = -1;
+                // DB user check
+                $checkUserInDB = $conn2->prepare("SELECT f.flatID FROM flat f, user u WHERE f.userID = u.userID and u.userID = $userIDinDB");
+                $checkUserInDB->execute();
+                $int = $checkUserInDB->rowCount();
+                if ($int != 0) {
+                    $pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+                    $valueFlat = $pullinfo['flatID'];
+                }
+                ?>
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
+                    <label for="userFlatno">User Flat No</label>
                 </div>
+
             </div>
 
             <label for="submit"></label>
