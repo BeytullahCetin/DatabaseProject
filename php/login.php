@@ -1,3 +1,10 @@
+<?php
+include "dbconn.php";
+include "dbconn2.php";
+session_start();
+ob_start();
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -44,7 +51,7 @@
 								</div>
 								<div class="form-group mb-3">
 									<label class="label" for="password">Password</label>
-									<input type="password" class="form-control" name="userPassword" placeholder="Password" required>
+									<input type="password" class="form-control" name="password" placeholder="Password" required>
 								</div>
 								<div class="form-group">
 									<button type="submit" class="form-control btn btn-primary submit px-3" name="signInBtn">Sign
@@ -67,35 +74,25 @@
 							<!-- USER CHECK IN DATABASE -->
 							<?php
 							if (isset($_POST['signInBtn'])) {
-								echo "THIS IS TEST FOR PHP";
 
-								$userUsername = htmlspecialchars($_POST['userName']);
-								$userPassword = md5(htmlspecialchars($_POST['userPassword']));
+								$userName = htmlspecialchars($_POST['userName']);
+								$password = htmlspecialchars($_POST['password']);
 
 								// DB user check
-								//$checkUserInDB = $db->prepare("SELECT * FROM usersinfo WHERE
-								//userUsername=:userUsername AND userPassword=:userPassword");
-								//$checkUserInDB->execute(array(
-								//    'userUsername' => $userUsername,
-								//    'userPassword' => $userPassword
-								//));
-								//$int = $checkUserInDB->rowCount();
-
+								$checkUserInDB = $conn2->prepare("SELECT * FROM user WHERE userName=:userName AND password=:password");
+								$checkUserInDB->execute(array(
+								   'userName' => $userName,
+								   'password' => $password
+								));
+								$int = $checkUserInDB->rowCount();
 
 								// If user find, then int equals 1 and sessions stared
-								// if ($int == 1) {
-								// 	$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-								// 	// Create sessions
-								// 	// IT MUST BE EDIT !!!!!!!
-								// 	$_SESSION['userID'] = $pullinfo['userID'];
-								// 	$_SESSION['userUsername'] = $userUsername;
-								// 	$_SESSION['userName'] = $pullinfo['userName'];
-								// 	$_SESSION['userPassword'] = $_POST['userPassword'];
-								// 	$_SESSION['userSurname'] = $pullinfo['userSurname'];
-								// 	$_SESSION['userFlatno'] = $pullinfo['userFlatno'];
-								// 	$_SESSION['userGSM'] = $pullinfo['userGSM'];
-								// 	$_SESSION['userEmail'] = $pullinfo['userEmail'];
-								// }
+								if ($int == 1) {
+									$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+									// Create sessions
+									// IT MUST BE EDIT !!!!!!!
+									$_SESSION['userID'] = $pullinfo['userID'];
+								}
 
 								// If user cannot find, then int equals 0 and print error 
 								// elseif ($int == 0) {
