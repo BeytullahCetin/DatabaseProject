@@ -13,24 +13,22 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   display: flex;
-  padding: 2%;
 }
 
 .main-item {
-  padding: 2%;
-  line-height: 1.5;
-  text-align: left;
+  padding: 3%;
+  line-height: 1.25;
+  text-align: center;
   flex: 1;
   flex-basis: 0;
   flex-grow: 1;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
 .label {
   text-align: right;
-}
 
-.main-item h2 {
-  color: #da4167;
 }
 
 .main-item p {
