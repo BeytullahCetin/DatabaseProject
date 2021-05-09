@@ -89,27 +89,29 @@ ob_start();
 								// If user find, then int equals 1 and sessions stared
 								if ($int == 1) {
 									$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+									
 									// Create sessions
-									// IT MUST BE EDIT !!!!!!!
 									$_SESSION['userID'] = $pullinfo['userID'];
 								}
 
 								// If user cannot find, then int equals 0 and print error 
-								// elseif ($int == 0) {
-								// 	$pullinfo2 = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-								// 	$username = $pullinfo2['userUsername'];
-								// 	$password = $pullinfo2['userPassword'];
-								// 	if ($password != $userPassword) {
-								// 		header("Location:../log.php?fail=password");
-								// 		exit;
-								// 	} elseif ($username != $userUsername) {
-								// 		header("Location:../log.php?fail=username");
-								// 		exit;
-								// 	} else {
-								// 		header("Location:../log.php?fail=fail");
-								// 		exit;
-								// 	}
-								// }
+								elseif ($int == 0) {
+									$pullinfo2 = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
+									$username2 = $pullinfo2['userUsername'];
+									$password2 = $pullinfo2['userPassword'];
+									echo $username2;
+									echo $password2;
+									if ($password != $userPassword) {
+										header("Location:login.php?fail=password");
+										exit;
+									} elseif ($username != $userUsername) {
+										header("Location:login.php?fail=username");
+										exit;
+									} else {
+										header("Location:login.php?fail=fatal");
+										exit;
+									}
+								}
 							} ?>
 							<!-- USER CHECK IN DATABASE END -->
 						</div>
