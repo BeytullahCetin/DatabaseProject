@@ -9,13 +9,23 @@ include "header.php";
 
     <!-- value include php files. (php echo $_SESSION['userUsername'])-->
     <div class="main-item">
-        <form class="was-validated" action="account.php" method="POST">
+        <form class="was-validated" action="#" method="POST">
 
             <div class="label">
 
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="text" id="username" name="username" value="<?php echo $_SESSION['user']['userName'] ?>" required>
-                    <label for="username">User Name</label>
+                    <input class="form-control" id="basic-addon1" type="text" id="birthDate" name="birthDate" value="<?php echo $_SESSION['user']['birthDate'] ?>" required>
+                    <label for="birthDate">Birth Date</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="text" id="gender" name="gender" value="<?php echo $_SESSION['user']['gender'] ?>" required>
+                    <label for="gender">Gender</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="text" id="userName" name="userName" value="<?php echo $_SESSION['user']['userName'] ?>" required>
+                    <label for="userName">User Name</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -29,8 +39,8 @@ include "header.php";
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM2" name="userGSM2" value="<?php echo $_SESSION['user']['userGSM_2'] ?>" required>
-                    <label for="userGSM2">User GSM - 2</label>
+                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM_2" name="userGSM_2" value="<?php echo $_SESSION['user']['userGSM_2'] ?>" required>
+                    <label for="userGSM_2">User GSM - 2</label>
                 </div>
 
                 <div class="form-floating mb-3">
@@ -44,8 +54,8 @@ include "header.php";
                 </div>
 
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="password" id="passwordNew" name="passwordNew" placeholder="New Password" required>
-                    <label for="passwordNew">User New Password</label>
+                    <input class="form-control" id="basic-addon1" type="password" id="password" name="password" placeholder="New Password" required>
+                    <label for="password">User New Password</label>
                 </div>
 
                 <!-- SHOW USERS FLAT NUMBER -->
@@ -78,50 +88,54 @@ include "header.php";
 
         <!--User submit their own infoo to database. We check database and info in there-->
         <?php
-        /*
+
         if (isset($_POST['submit'])) {
-
             $bilgilerim_id = $_SESSION['userID'];
-            if ($_POST['userPassword'] == $_SESSION['userPassword']) {
+            if ($_POST['passwordOld'] == $_SESSION['user']['password']) {
+                $newPass = $_POST['password'];
+                echo $newPass;
 
-                $kaydet = $db->prepare("UPDATE usersinfo set
-                userUsername=:userUsername,
+                $kaydet = $conn2->prepare("UPDATE user set
+                password=:password,
+                birthDate=:birthDate,
+                gender=:gender,
+                isAdmin=:isAdmin,
                 userName=:userName,
                 userSurname=:userSurname,
+                userGSM=:userGSM,
+                userGSM_2=:userGSM_2,
                 userEmail=:userEmail,
-                userUsername=:userUsername,
-                userFlatno=:userFlatno,
-                userPassword=:userPassword,
-                userGSM=:userGSM
+                registerDate=:registerDate
 
                 where userID={$_SESSION['userID']}
                 ");
 
                 $insert = $kaydet->execute(array(
-
+                    'password' => $newPass,
+                    'birthDate' => $_POST['birthDate'],
+                    'gender' => $_POST['gender'],
+                    'isAdmin' => $_SESSION['user']['isAdmin'],
                     'userName' => $_POST['userName'],
                     'userSurname' => $_POST['userSurname'],
+                    'userGSM' => $_POST['userGSM'],
+                    'userGSM_2' => $_POST['userGSM_2'],
                     'userEmail' => $_POST['userEmail'],
-                    'userUsername' => $_POST['userUsername'],
-                    'userFlatno' => $_POST['userFlatno'],
-                    'userPassword' => md5($_POST['userPasswordNEW']),
-                    'userGSM' => $_POST['userGSM']
-
+                    'registerDate' => $_SESSION['user']['registerDate']
                 ));
                 if ($insert) {
                     //echo "kayıt başarılı";
-                    Header("location:account.php?update=ok&bilgilerim_id=$bilgilerim_id");
+                    Header("Location:profile.php?Updade=Successfull");
                     exit;
                 } else {
                     //echo "kayıt başarısız";
-                    Header("Location:account.php?update=no&bilgilerim_id=$bilgilerim_id");
+                    Header("Location:profile.php?Updade=Fail");
                     exit;
                 }
             } else {
                 echo "<br><div class='alert alert-warning' role='alert'>Old Password is WRONG</div>";
             }
         }
-        */
+
         ?>
 
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
