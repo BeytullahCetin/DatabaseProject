@@ -1,8 +1,8 @@
 <?php
-include "dbconn.php";
-include "dbconn2.php";
 session_start();
 ob_start();
+include "dbconn.php";
+include "dbconn2.php";
 ?>
 
 <!doctype html>

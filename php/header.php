@@ -2,6 +2,8 @@
 <html lang="en">
 
 <?php
+session_start();
+ob_start();
 include "dbconn.php";
 ?>
 

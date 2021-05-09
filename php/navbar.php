@@ -16,26 +16,27 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" aria-current="page" href="home.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">System</a>
+                        <a class="nav-link" href="show_users.php">Users</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Account</a>
+                        <a class="nav-link" href="showDues.php">Dues</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Profile</a>
+                        <a class="nav-link" href="report.php">Report</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Complaint</a>
+                        <a class="nav-link" href="profile.php">Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">TESTER</a>
+                        <a class="nav-link" href="contact.php">Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">DEMO</a>
+                        <a class="nav-link" href="complaint.php">Complaint</a>
                     </li>
+                    
                 </ul>
 
                 <!-- 
@@ -53,9 +54,10 @@
 
                     //location dont have function!! It conneted to the logout.php.
                     function logoutFun() {
-                        var bol = confirm("ARE YOU SURE TO LOG-OUT?");
+                        var bol = confirm("ARE YOU SURE TO LOG OUT?");
                         if (bol) {
-                            location = "";
+                            session_destroy();
+                            header("Location:login.php");
                         }
                     }
                 </script>
