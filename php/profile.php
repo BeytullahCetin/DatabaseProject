@@ -7,14 +7,13 @@ include "header.php";
 
 <main class="main-content">
 
-    <!-- value include php files. (php echo $_SESSION['userUsername'])-->
     <div class="main-item">
         <form class="was-validated" action="#" method="POST">
 
             <div class="label">
 
                 <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="text" id="birthDate" name="birthDate" value="<?php echo $_SESSION['user']['birthDate'] ?>" required>
+                    <input class="form-control" id="basic-addon1" type="date" id="birthDate" name="birthDate" value="<?php echo $_SESSION['user']['birthDate'] ?>" required>
                     <label for="birthDate">Birth Date</label>
                 </div>
 
