@@ -27,9 +27,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="report.php">Report</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile.php">Profile</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="contact.php">Contact</a>
                     </li>
@@ -37,13 +35,9 @@
                         <a class="nav-link" href="complaint.php">Complaint</a>
                     </li>
                     
-                </ul>
-
-                <!-- 
-                    Without php TAGS !!!!
-                    php echo  $_SESSION['userName'] . " " . $_SESSION['userSurname']
-                    --->
-                <a class="navbar-brand" href="#"><b id="upper">USER NAME</b></a>
+                </ul>                    
+                    
+                <a class="navbar-brand" href="profile.php"><b id="upper"><?php echo $_SESSION['user']['userName'] ." ". $_SESSION['user']['userSurname']?></b></a>
 
                 <ul class="navbar-nav mb-2 mb-lg-0 justify-content-right">
                     <li class="nav-item">
