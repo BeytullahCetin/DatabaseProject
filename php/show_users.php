@@ -38,7 +38,6 @@ include "header.php";
 
                                 <td>
                                     <form action="userUpdate.php" method="POST">
-
                                         <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
                                         <input class="btn btn-success" type="submit" name="userUpdate" value="UPDATE USER">
                                     </form>

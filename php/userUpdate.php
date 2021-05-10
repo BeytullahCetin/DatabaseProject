@@ -5,6 +5,14 @@ include "footer.php";
 <link rel="stylesheet" href="../css/update.css">
 
 <main>
+
+    <?php
+    // Catch the selected user id 
+    if (isset($_POST['userUpdate'])) {
+        $selectedUserID = $_POST['userID'];
+    }
+
+    ?>
     <div class="main-update">
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
         <?php
@@ -84,62 +92,23 @@ include "footer.php";
                     <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
                     <label for="userFlatno">User Flat No</label>
                 </div>
-    <?php
-    if (isset($_GET['userIDupdate'])) {
+                <?php
+                if (isset($_GET['userIDupdate'])) {
 
-        // In the URL, takes user id and search in database
-        $bilgilerimsor = $db->prepare("SELECT * from usersinfo where userID=:userID");
-        $bilgilerimsor->execute(array(
-            'userID' => $_GET['userID']
-        ));
+                    // In the URL, takes user id and search in database
+                    $bilgilerimsor = $db->prepare("SELECT * from usersinfo where userID=:userID");
+                    $bilgilerimsor->execute(array(
+                        'userID' => $_GET['userID']
+                    ));
 
-        // User informations come with `$bilgilerimcek`, then use it in inputs' value 
-        $bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC);
-    }
-    ?>
-
-    <div class="main-update">
-        <form action="update.php" method="POST">
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Name</span>
-                <!--
-                        input value is echo $bilgilerimcek['userName'] with php tags  
-                        @param database column name $userName
-                    -->
-                <input type="text" required name="userName" class="form-control" value="">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Surname</span>
-                <input type="text" required name="userSurname" class="form-control" value="">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Flat No</span>
-                <input type="int" required name="userFlatno" class="form-control" value="">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">User Name</span>
-                <input type="text" required name="userUsername" class="form-control" value="">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Mail</span>
-                <input type="text" required name="userEmail" class="form-control" value="">
-            </div>
-            <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">GSM</span>
-                <input type="text" required name="userGSM" class="form-control" value="">
-            </div>
-
-            <input type="hidden" value="<?php echo $bilgilerimcek['userID'] ?>" name="userID"><br>
-            <div class="buttons">
-                <button type="submit" class="btn btn-success" id="update" name="updateButton">Update</button>
-                <button type="submit" class="btn btn-secondary" id="back" name="backButton">Back</button>
-            </div>
-        </form>
-    </div>
+                    // User informations come with `$bilgilerimcek`, then use it in inputs' value 
+                    $bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC);
+                }
+                ?>
 
 
-    <?php
-    /*
+                <?php
+                /*
 		if(isset($_POST['backButton'])){
             // Go to the main page
 			header("#");
@@ -182,5 +151,5 @@ include "footer.php";
 			}
 		}
         */
-    ?>
+                ?>
 </main>
