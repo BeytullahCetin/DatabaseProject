@@ -4,14 +4,14 @@ include "header.php";
 
 <div class="container col-md-4 my-5">
 
-    <form action="addDue.php" method="POST">
+    <form action="addDueDB.php" method="POST">
 
         <div class="form-floating mb-3">
             <?php
             $myDate = date("Y-m");
             ?>
-            <input class="form-control" type="month" id="duePeriod" name="duePeriod" value="<?php echo "$myDate"; ?>">
-            <label for="duePeriod">Due Period</label>
+            <input class="form-control" type="month" id="duePeriot" name="duePeriot" value="<?php echo "$myDate"; ?>">
+            <label for="duePeriot">Due Periot</label>
         </div>
 
         <div class="form-floating mb-3">
