@@ -5,7 +5,6 @@ include "footer.php";
 <link rel="stylesheet" href="../css/update.css">
 
 <main>
-<<<<<<< HEAD
     <div class="main-update">
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
         <?php
@@ -85,7 +84,6 @@ include "footer.php";
                     <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
                     <label for="userFlatno">User Flat No</label>
                 </div>
-=======
     <?php
     if (isset($_GET['userIDupdate'])) {
 
@@ -99,7 +97,6 @@ include "footer.php";
         $bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC);
     }
     ?>
->>>>>>> 73a66422080872ad6143bcb8f1012c137494812b
 
     <div class="main-update">
         <form action="update.php" method="POST">
