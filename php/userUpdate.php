@@ -1,7 +1,9 @@
 <?php
 include "header.php";
 include "footer.php";
+$userID= $_POST['userID'];
 ?>
+
 <link rel="stylesheet" href="../css/update.css">
 
 <main>

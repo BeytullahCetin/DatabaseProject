@@ -37,8 +37,11 @@ include "header.php";
 
 
                                 <td>
-                                    <a href="userUpdate.php"> <button class="btn btn-success">Update User</button>
-                                </td></a>
+                                <form action="userUpdate.php" method="POST">
+                                            <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
+                                            <input class="btn btn-success" type="submit" name="userUpdate" value="UPDATE USER">
+                                        </form>
+                                </td>
                                 <td><?php echo $row['userName']; ?></td>
                                 <td><?php echo $row['userSurname']; ?></td>
                                 <td><?php echo $row['userGSM']; ?></td>
