@@ -78,10 +78,10 @@ include "header.php";
 
             </div>
 
-            <label for="submit"></label>
             <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
-            <label for="reset"></label>
+            <label for="submit"></label>
             <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" required>
+            <label for="reset"></label>
         </form>
 
 
@@ -149,10 +149,10 @@ include "header.php";
                         $_SESSION['userID'] = $pullinfo['userID'];
                         $_SESSION['user'] = $pullinfo;
                     }
-                    Header("Location:profile.php?Updade=Successfull");
+                    Header("Location:profile.php?Update=Successfull");
                     exit;
                 } else {
-                    Header("Location:profile.php?Updade=Fail");
+                    Header("Location:profile.php?Update=Fail");
                     exit;
                 }
             } else {
@@ -165,10 +165,10 @@ include "header.php";
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
         <?php
 
-        if (isset($_GET['Updade'])) {
-            if ($_GET['Updade'] == "Successfull") {
+        if (isset($_GET['Update'])) {
+            if ($_GET['Update'] == "Successfull") {
                 echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
-            } elseif ($_GET['Updade'] == "Fail") {
+            } elseif ($_GET['Update'] == "Fail") {
                 echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
             } else {
                 echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
@@ -179,3 +179,7 @@ include "header.php";
     </div>
 
 </main>
+
+<?php
+include "footer.php";
+?>
