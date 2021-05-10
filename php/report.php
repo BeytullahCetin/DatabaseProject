@@ -47,22 +47,22 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
         <div id='piechart'></div>
     </div>
 
-    <div class="d-flex container justify-content-center">
-        <form class="row row-cols-lg-auto g-3 align-items-center" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
+    <div class="d-flex mb-3 row g-3 p-1">
+        <form class="row align-items-center" method="GET" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>">
 
-            <div class="form-floating mb-3">
+            <div class="form-floating col-md-5 p-1">
                 <input class="form-control" type="date" id="startingDate" name="startingDate" value="<?php echo "$startingDate"; ?>">
                 <label for="expenseDate">Starting Date:</label>
             </div>
 
-            <div class="form-floating mb-3">
+            <div class="form-floating col-md-5 p-1">
                 <input class="form-control" type="date" id="endingDate" name="endingDate" value="<?php echo "$endingDate"; ?>">
                 <label for="endingDate">Ending Date</label>
             </div>
 
 
-            <div class="form-group d-grid gap-2 mb-3">
-                <input class="btn btn-primary" type="submit" value=Show>
+            <div class="form-group col-md-2 d-grid gap-2">
+                <input class="btn btn-primary py-3" type="submit" value=Show>
             </div>
 
         </form>
