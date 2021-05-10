@@ -1,10 +1,11 @@
 <?php
 include "header.php";
+include "footer.php";
 ?>
-
 <link rel="stylesheet" href="../css/update.css">
 
 <main>
+<<<<<<< HEAD
     <div class="main-update">
         <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
         <?php
@@ -84,89 +85,105 @@ include "header.php";
                     <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
                     <label for="userFlatno">User Flat No</label>
                 </div>
+=======
+    <?php
+    if (isset($_GET['userIDupdate'])) {
 
+        // In the URL, takes user id and search in database
+        $bilgilerimsor = $db->prepare("SELECT * from usersinfo where userID=:userID");
+        $bilgilerimsor->execute(array(
+            'userID' => $_GET['userID']
+        ));
+
+        // User informations come with `$bilgilerimcek`, then use it in inputs' value 
+        $bilgilerimcek = $bilgilerimsor->fetch(PDO::FETCH_ASSOC);
+    }
+    ?>
+>>>>>>> 73a66422080872ad6143bcb8f1012c137494812b
+
+    <div class="main-update">
+        <form action="update.php" method="POST">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Name</span>
+                <!--
+                        input value is echo $bilgilerimcek['userName'] with php tags  
+                        @param database column name $userName
+                    -->
+                <input type="text" required name="userName" class="form-control" value="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Surname</span>
+                <input type="text" required name="userSurname" class="form-control" value="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Flat No</span>
+                <input type="int" required name="userFlatno" class="form-control" value="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">User Name</span>
+                <input type="text" required name="userUsername" class="form-control" value="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Mail</span>
+                <input type="text" required name="userEmail" class="form-control" value="">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">GSM</span>
+                <input type="text" required name="userGSM" class="form-control" value="">
             </div>
 
-            <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
-            <label for="submit"></label>
-            <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" required>
-            <label for="reset"></label>
+            <input type="hidden" value="<?php echo $bilgilerimcek['userID'] ?>" name="userID"><br>
+            <div class="buttons">
+                <button type="submit" class="btn btn-success" id="update" name="updateButton">Update</button>
+                <button type="submit" class="btn btn-secondary" id="back" name="backButton">Back</button>
+            </div>
         </form>
     </div>
 
 
-
     <?php
+    /*
+		if(isset($_POST['backButton'])){
+            // Go to the main page
+			header("#");
+		}
+		if (isset($_POST['updateButton'])) {
 
-    // Go to the main page
-    if (isset($_POST['backButton'])) {
-        header("#");
-    }
-    if (isset($_POST['submit'])) {
+			$bilgilerim_id = $_POST['userID'];
 
-        $bilgilerim_id = $_SESSION['userID'];
-
-        $kaydet = $conn2->prepare("UPDATE user set
-		birthDate=:birthDate,
-		gender=:gender,
-		isAdmin=:isAdmin,
+			$kaydet = $db->prepare("UPDATE usersinfo set
 		userName=:userName,
 		userSurname=:userSurname,
-		userGSM=:userGSM,
-		userGSM_2=:userGSM_2,
 		userEmail=:userEmail,
-		registerDate=:registerDate
+		userUsername=:userUsername,
+		userFlatno=:userFlatno,
+		userGSM=:userGSM
 
-
-		where userID={$_SESSION['userID']}
+		where userID={$_POST['userID']}
 		");
 
-        $insert = $kaydet->execute(array(
+			$insert = $kaydet->execute(array(
 
-            'birthDate' => $_POST['birthDate'],
-            'gender' => $_POST['gender'],
-            'isAdmin' => $_POST['isAdmin'],
-            'userName' => $_POST['userName'],
-            'userSurname' => $_POST['userSurname'],
-            'userGSM' => $_POST['userGSM'],
-            'userGSM_2' => $_POST['userGSM_2'],
-            'userEmail' => $_POST['userEmail'],
-            'registerDate' => $_POST['registerDate']
-        ));
+				'userName' => $_POST['userName'],
+				'userSurname' => $_POST['userSurname'],
+				'userEmail' => $_POST['userEmail'],
+				'userUsername' => $_POST['userUsername'],
+				'userFlatno' => $_POST['userFlatno'],
+				'userGSM' => $_POST['userGSM']
+			));
 
 
 
-        if ($insert) {
-            $updatedUserID = $_SESSION['userID'];
-            session_destroy();
-            session_start();
-            // DB updated user check 
-            $checkUserInDB = $conn2->prepare("SELECT * FROM user WHERE userID = $updatedUserID");
-            $checkUserInDB->execute();
-            $int = $checkUserInDB->rowCount();
-
-            // If user find, then int equals 1 and sessions stared
-            if ($int == 1) {
-                $pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-
-                // Create sessions
-                $_SESSION['userID'] = $pullinfo['userID'];
-                $_SESSION['user'] = $pullinfo;
-                Header("Location:userUpdate.php?Update=Successfull");
-                exit;
-            }
-            exit;
-        } else {
-            //echo "kayıt başarısız";
-            Header("Location:userUpdate.php?Update=Fail");
-            exit;
-        }
-    }
-
+			if ($insert) {
+				//echo "kayıt başarılı";
+				Header("Location:../admin/adminInfo.php?durum=ok&bilgilerim_id=$bilgilerim_id");
+				exit;
+			} else {
+				//echo "kayıt başarısız";
+				Header("Location:../admin/adminInfo.php?durum=no&bilgilerim_id=$bilgilerim_id");
+				exit;
+			}
+		}
+        */
     ?>
 </main>
-
-
-<?php
-include "footer.php";
-?>
