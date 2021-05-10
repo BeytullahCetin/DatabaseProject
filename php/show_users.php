@@ -37,8 +37,8 @@ include "header.php";
 
 
                                 <td>
-                                    <a href="userUpdate.php"> <button class="btn btn-success">Update User</button>
-                                </td></a>
+                                    <a href="userUpdate.php"> <button class="btn btn-success">Update User</button></a>
+                                </td>
                                 <td><?php echo $row['userName']; ?></td>
                                 <td><?php echo $row['userSurname']; ?></td>
                                 <td><?php echo $row['userGSM']; ?></td>

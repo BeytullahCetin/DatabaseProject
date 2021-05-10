@@ -5,21 +5,20 @@ include "header.php";
 <link rel="stylesheet" href="../css/update.css">
 
 <main>
-    <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
-    <?php
-
-    if (isset($_GET['Update'])) {
-        if ($_GET['Update'] == "Successfull") {
-            echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
-        } elseif ($_GET['Update'] == "Fail") {
-            echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
-        } else {
-            echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
-        }
-    }
-    ?>
-    
     <div class="main-update">
+        <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
+        <?php
+
+        if (isset($_GET['Update'])) {
+            if ($_GET['Update'] == "Successfull") {
+                echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
+            } elseif ($_GET['Update'] == "Fail") {
+                echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
+            } else {
+                echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
+            }
+        }
+        ?>
         <form class="was-validated" action="userUpdate.php" method="POST">
             <div class="label">
                 <div class="form-floating mb-3">
