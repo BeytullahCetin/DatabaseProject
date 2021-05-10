@@ -1,11 +1,9 @@
 <?php
 include "header.php";
-include "dbconn2.php"
-
 ?>
 <div class="container col-md-5  my-5">
 
-    <form action="" method="POST">
+    <form action="complaint.php" method="POST">
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Name</label>
             <input type="text" name="name" class="form-control" aria-describedby="emailHelp" placeholder="" value="<?php echo  $_SESSION['user']['userName']; ?>" readonly="">
@@ -19,9 +17,8 @@ include "dbconn2.php"
         <div>
             <label for="exampleInputEmail1"> Complaint Title </label>
             <select class="form-select" aria-label="Default select example" name="complaintTitle">
-
-                <option value="1">Garrage</option>
-                <option value="2">Other</option>
+                <option value="Garrage">Garrage</option>
+                <option value="Other">Other</option>
             </select>
         </div>
         <div class="form-group my-3">
@@ -32,25 +29,33 @@ include "dbconn2.php"
 
 
         <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        <button type="reset" class="btn btn-danger" name="reset">Reset</button>
     </form>
 </div>
 
 <?php
-$a= $_POST['complaintTitle'];
-$b=$_POST['complaintMessage'];
+include 'dbconn2.php';
+
 if (isset($_POST['submit'])) {
+    $complaintTitle = $_POST['complaintTitle'];
+    $complaintMessage = $_POST['complaintMessage'];
     $userID = $_SESSION['userID'];
+    $complaintDate = date("Y/m/d");
+    echo $complaintDate;
+
+
     $kaydet = $conn2->prepare("INSERT INTO complaint set       
 		userID=:userID,
 		complaintTitle=:complaintTitle,
-		complaintMessage=:complaintMessage
+		complaintMessage=:complaintMessage,
+		complaintDate=:complaintDate
 	");
-
 
     $insert = $kaydet->execute(array(
         'userID' => $userID,
-        'complaintTitle' =>$a,
-        'complaintMesssage' =>$b ,
+        'complaintTitle' => $complaintTitle,
+        'complaintMessage' => $complaintMessage,
+        'complaintDate' => $complaintDate
     ));
 
     if ($insert) {
