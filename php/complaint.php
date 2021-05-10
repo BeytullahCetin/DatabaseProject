@@ -3,16 +3,24 @@ include "header.php";
 ?>
 <div class="container col-md-5  my-5">
 
-    <form>
+    <form method="POST">
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Name</label>
-            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" value="Name" readonly="">
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" value="<?php echo  $_SESSION['user']['userName']; ?>" readonly="">
 
         </div>
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Surname </label>
-            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" value="Surname" readonly="">
+            <input type="text" class="form-control" aria-describedby="emailHelp" placeholder="" value="<?php echo  $_SESSION['user']['userSurname']; ?>" readonly="">
 
+        </div>
+        <div>
+        <label for="exampleInputEmail1"> Complaint Title </label>
+        <select class="form-select" aria-label="Default select example" name="complaintTitle">
+        
+            <option value="1" >Garrage</option>
+            <option value="2">Other</option>
+        </select>
         </div>
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Complaint&Request</label>
@@ -21,7 +29,7 @@ include "header.php";
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary" name="complaint submit">Submit</button>
     </form>
 </div>
 

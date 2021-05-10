@@ -8,6 +8,7 @@
     session_start();
     ob_start();
     include "dbconn.php";
+    include "dbconn2.php";
     ?>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
