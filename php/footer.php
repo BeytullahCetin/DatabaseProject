@@ -1,4 +1,4 @@
-<footer class="footer bg-dark mt-auto">
+<footer class="footer mt-auto py-2 bg-dark">
     <div class="container">
         <p class="text-muted text-center"><strong>Apartment Management System © 2020 - 2021</strong></p>
         <p class="text-muted text-center"><em>Usefull Links</em></p>
@@ -15,4 +15,5 @@
     </div>
 </footer>
 </body>
+
 </html>

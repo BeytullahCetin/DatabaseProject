@@ -144,6 +144,6 @@ include "dbconn2.php";
     </div>
 </main>
 
-<?
+<?php
 include "footer.php";
 ?>
