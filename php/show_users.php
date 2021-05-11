@@ -16,7 +16,12 @@ include "header.php";
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
-                                <th scope="col">Operations</th>
+                                <?php
+                                if ($_SESSION['user']['isAdmin'] == "admin") {
+                                ?><th scope="col">Operations</th>
+                                <?php
+                                }
+                                ?>
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Number</th>
@@ -35,13 +40,19 @@ include "header.php";
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
 
+                                <?php
+                                if ($_SESSION['user']['isAdmin'] == "admin") {
+                                ?>
+                                    <td>
+                                        <form action="userUpdate.php" method="GET">
+                                            <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
+                                            <input class="btn btn-success" type="submit" name="userUpdate" value="UPDATE USER">
+                                        </form>
+                                    </td>
+                                <?php
+                                }
+                                ?>
 
-                                <td>
-                                    <form action="userUpdate.php" method="GET">
-                                        <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
-                                        <input class="btn btn-success" type="submit" name="userUpdate" value="UPDATE USER">
-                                    </form>
-                                </td>
                                 <td><?php echo $row['userName']; ?></td>
                                 <td><?php echo $row['userSurname']; ?></td>
                                 <td><?php echo $row['userGSM']; ?></td>
