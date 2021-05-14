@@ -81,7 +81,7 @@
                                     </svg></a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle <?php if ($activePage == "addDue" || $activePage == "addExpense") {
+                                <a class="nav-link dropdown-toggle <?php if ($activePage == "addDue" || $activePage == "addExpense" || $activePage == "addAnnouncement") {
                                                                         echo "active";
                                                                     } ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
@@ -92,6 +92,7 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="addDue.php">Add Due</a></li>
                                     <li><a class="dropdown-item" href="addExpense.php">Add Expense</a></li>
+                                    <li><a class="dropdown-item" href="addAnnouncement.php">Add Announcement</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">

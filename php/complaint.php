@@ -80,12 +80,6 @@ include "header.php";
 
             </table>
 
-
-
-
-
-
-
         </div>
     <?php
     }
