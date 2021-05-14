@@ -31,6 +31,19 @@
                                 </svg></a>
 
                         </li>
+                        <?php
+                        if ($_SESSION['user']['isAdmin'] == "admin") {
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?php if ($activePage == "addAnnouncementDB") {
+                                                        echo "active";
+                                                    } ?>" aria-current="page" href="../php/addAnnouncementDB.php" title="Update Announcement">Update Announcement</a>
+
+                            </li>
+                        <?php
+                        }
+
+                        ?>
                         <li class="nav-item">
                             <a class="nav-link <?php if ($activePage == "show_users") {
                                                     echo "active";
