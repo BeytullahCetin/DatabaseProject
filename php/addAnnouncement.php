@@ -25,9 +25,6 @@ include "header.php";
             <select class="form-select" aria-label="Default select example" name="announcementColor">
                 <option value="red">red</option>
                 <option value="green">green</option>
-                <option value="green">black</option>
-                <option value="green">yellow</option>
-                <option value="green">blue</option>
             </select>
         </div>
 

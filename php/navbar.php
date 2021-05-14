@@ -35,9 +35,9 @@
                         if ($_SESSION['user']['isAdmin'] == "admin") {
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link <?php if ($activePage == "addAnnouncementDB") {
+                                <a class="nav-link <?php if ($activePage == "announcement") {
                                                         echo "active";
-                                                    } ?>" aria-current="page" href="../php/addAnnouncementDB.php" title="Update Announcement">Update Announcement</a>
+                                                    } ?>" aria-current="page" href="../php/announcement.php" title="Announcement">Update Announcement</a>
 
                             </li>
                         <?php

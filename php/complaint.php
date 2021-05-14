@@ -51,7 +51,7 @@ include "header.php";
                             <td>
                                 <form action="" method="POST">
                                     <input type="hidden" name="complaintID" value="<?php echo $bilgileriçek['complaintID']; ?>">
-                                    <input class="btn btn-success" type="submit" name="delete" value="DELETE" onclick="return confirm('Are you sure?')">
+                                    <input class="btn btn-success" type="submit" name="delete"  value="DELETE" onclick="return confirm('Are you sure?')">
                                 </form>
                             </td>
                         </tr>
