@@ -5,17 +5,15 @@ include "header.php";
     function formKontrol() {
         var complaintMessage = document.getElementById("complaintMessage").value;
 
-
         if (complaintMessage.length == 0 || complaintMessage == null) {
 
             alert("PLEASE ENTER A COMPLAINT.");
         } else {
-            alert("YOUR COPLAINT HAS BEEN RECEIVED.");
+            alert("YOUR COMPLAINT HAS BEEN RECEIVED.");
 
         }
     }
 </script>
-<div class="container col-md-5  my-5">
     <?php
     if ($_SESSION['user']['isAdmin'] == "admin") { ?>
         <div class="container col-md-8 my-5">
@@ -49,7 +47,7 @@ include "header.php";
                             <td><?php echo $bilgileriçek['complaintTitle']; ?></td>
                             <td><?php echo $bilgileriçek['complaintMessage']; ?></td>
                             <td>
-                                <form action="" method="POST">
+                                <form action="complaintDB.php" method="POST">
                                     <input type="hidden" name="complaintID" value="<?php echo $bilgileriçek['complaintID']; ?>">
                                     <input class="btn btn-success" type="submit" name="delete"  value="DELETE" onclick="return confirm('Are you sure?')">
                                 </form>
@@ -57,24 +55,7 @@ include "header.php";
                         </tr>
 
                     <?php } ?>
-                    <?php
-
-                    if (isset($_POST['delete'])) {
-                        $complaintID = $_POST['complaintID'];
-                        $silme = $conn2->prepare("DELETE from complaint where complaintID=:complaintID");
-                        $kont = $silme->execute(array(
-                            'complaintID' => $complaintID
-                        ));
-                    }
-                    if ($kont) {
-
-                        header("Location:complaint.php");
-                        exit();
-                    } else {
-                        header("Location:complaint.php");
-                        exit();
-                    }
-                    ?>
+                   
 
                 </thead>
 
@@ -82,9 +63,11 @@ include "header.php";
 
         </div>
     <?php
-    }
-    ?>
+    }else{
 
+    
+    ?>
+ <div class="container col-md-5 my-5">
     <form action="complaint.php" method="POST">
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Name</label>
@@ -115,7 +98,7 @@ include "header.php";
     </form>
 </div>
 
-<?php
+<?php }
 include 'dbconn2.php';
 
 if (isset($_POST['submit'])) {
