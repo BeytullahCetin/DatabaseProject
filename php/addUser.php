@@ -74,29 +74,6 @@ include "dbconn2.php";
                     <input class="form-control" id="basic-addon1" type="password" id="password" name="password" required>
                     <label for="password">User Password</label>
                 </div>
-
-                <div class="form-floating mb-3">
-                    <select name="userFlatno" id="userFlatno" class="form-control" required>
-
-                        <?php
-
-                        // IT SHOWS THAT EMPTY FLATS IN APARTMENT.
-                        $kontrol = $conn2->prepare("SELECT doorNo FROM flat");
-                        $kontrol->execute();
-                        $faltNos = array();
-                        while ($pullinfo = $kontrol->fetch(PDO::FETCH_ASSOC)) {
-                            array_push($faltNos, $pullinfo['doorNo']);
-                        }
-                        for ($i = 1; $i <= 20; $i++) {
-                            if (!in_array($i, $faltNos)) {
-                                echo "<option value='$i'>No : $i</option>";
-                            }
-                        }
-                        ?>
-                    </select>
-                    <label for="userFlatno">User Flat No</label>
-
-                </div>
             </div>
 
             <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
