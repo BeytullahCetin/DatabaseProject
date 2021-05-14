@@ -14,6 +14,36 @@ if (isset($_GET['endingDate'])) {
     $endingDate = date("Y-m-d", mktime(0, 0, 0, date("m"), 0));
 }
 
+$query = "SELECT SUM(d.duePrice) FROM userFlatDue ufd, due d WHERE ufd.dueID = d.dueID AND ufd.paymentDate IS NOT NULL AND d.duePeriot BETWEEN '$startingDate' AND '$endingDate'";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_array($result);
+  if($row['SUM(d.duePrice)'] > 0){
+    $income = $row['SUM(d.duePrice)'];
+  }else{
+    $income=0;
+  }
+  
+
+  $query = "SELECT SUM(d.duePrice) FROM userFlatDue ufd, due d WHERE ufd.dueID = d.dueID AND ufd.paymentDate IS NULL AND d.duePeriot BETWEEN '$startingDate' AND '$endingDate'";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_array($result);
+  if($row['SUM(d.duePrice)'] > 0){
+    $unpaiddues = $row['SUM(d.duePrice)'];
+  }else{
+    $unpaiddues=0;
+  }
+  
+
+
+  $query = "SELECT SUM(expensePrice) FROM expense WHERE expenseDate BETWEEN '$startingDate' AND '$endingDate'";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
+  if($row['SUM(expensePrice)'] > 0){
+    $expense = $row['SUM(expensePrice)'];
+  }else{
+    $expense=0;
+  }
+
 echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
     
     <script type='text/javascript'>
@@ -25,9 +55,9 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
     function drawChart() {
       var data = google.visualization.arrayToDataTable([
       ['Task', 'Hours per Day'],
-      ['Due Incomes'," . 100 . "],
-      ['Expense'," . 600 . "],
-      ['Unpaid Dues'," . 1500 . "]
+      ['Due Incomes'," . $income . "],
+      ['Expense'," . $expense . "],
+      ['Unpaid Dues'," . $unpaiddues . "]
     ]);
     
       // Optional; add a title and set the width and height of the chart
@@ -82,7 +112,37 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
                     <div class="accordion-body">
-                        Selected Expense Report
+                    <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Expense Title</th>
+                                    <th>Expense Date</th>
+                                    <th>Expense Price</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+
+                                $query = "SELECT expenseTitle, expenseDate, expensePrice 
+                                FROM expense
+                                WHERE expenseDate BETWEEN '$startingDate' AND '$endingDate'
+                                ORDER BY expenseDate DESC";
+                                $result = mysqli_query($conn, $query);
+
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+
+                                    <tr>
+                                        <td><?php echo $row['expenseTitle']; ?></td>
+                                        <td><?php echo $row['expenseDate']; ?></td>
+                                        <td><?php echo $row['expensePrice']; ?></td>
+                                    </tr>
+
+
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -95,7 +155,36 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
                     <div class="accordion-body">
-                        Lifetime Expense Report
+                    <table class="table table-dark table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Expense Title</th>
+                                    <th>Expense Date</th>
+                                    <th>Expense Price</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <?php
+
+                                $query = "SELECT expenseTitle, expenseDate, expensePrice 
+                                FROM expense
+                                ORDER BY expenseDate DESC";
+                                $result = mysqli_query($conn, $query);
+
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                ?>
+
+                                    <tr>
+                                        <td><?php echo $row['expenseTitle']; ?></td>
+                                        <td><?php echo $row['expenseDate']; ?></td>
+                                        <td><?php echo $row['expensePrice']; ?></td>
+                                    </tr>
+
+
+                                <?php } ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
