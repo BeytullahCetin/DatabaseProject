@@ -68,10 +68,10 @@ include "header.php";
                     }
                     if ($kont) {
 
-                        header("Location:addAnnouncement.php");
+                        header("Location:complaint.php");
                         exit();
                     } else {
-                        header("Location:addAnnouncement.php");
+                        header("Location:complaint.php");
                         exit();
                     }
                     ?>
