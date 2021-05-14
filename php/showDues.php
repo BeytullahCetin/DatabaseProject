@@ -20,6 +20,7 @@ include "header.php";
                                 <th>Action</th>
                                 <th>Door No</th>
                                 <th>Name - Surname</th>
+                                <th>GSM</th>
                                 <th>Due Period</th>
                                 <th>Due Price</th>
                                 <th>Status</th>
@@ -29,7 +30,10 @@ include "header.php";
                         <tbody>
                             <?php
 
-                            $query = "SELECT * FROM user u, userdue ud, due d, flat f WHERE u.userID = f.userID AND u.userID = ud.userID AND ud.dueID = d.dueID AND duePaymentDate IS NOT NULL";
+                            $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot, ufd.userFlatDueID 
+                            FROM user u, flat f, userFlat uf, userFlatDue ufd, due d 
+                            WHERE u.userID = uf.userID AND uf.flatID = f.flatID AND uf.userFlatID = ufd.userFlatID AND ufd.dueID = d.dueID AND ufd.paymentDate IS NULL
+                            ORDER BY d.duePeriot DESC, f.doorNo";
                             $result = mysqli_query($conn, $query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -38,13 +42,13 @@ include "header.php";
                                 <tr>
                                     <td>
                                         <form action="payDueDB.php" method="POST">
-                                            <input type="hidden" name="userID" value="<?php echo $row['userID']; ?>">
-                                            <input type="hidden" name="dueID" value="<?php echo $row['dueID']; ?>">
+                                            <input type="hidden" name="ufdID" value="<?php echo $row['userFlatDueID']; ?>">
                                             <input class="btn btn-success" type="submit" name="payDueSubmit" value="Pay">
                                         </form>
                                     </td>
                                     <td><?php echo $row['doorNo']; ?></td>
                                     <td><?php echo $row['userName'] . " " . $row['userSurname']; ?></td>
+                                    <td><?php echo $row['userGSM']; ?></td>
                                     <td><?php echo $row['duePeriot']; ?></td>
                                     <td><?php echo $row['duePrice']; ?></td>
                                     <td>NOT PAID</td>
@@ -71,26 +75,35 @@ include "header.php";
                             <tr>
                                 <th>Door No</th>
                                 <th>Name - Surname</th>
+                                <th>GSM</th>
                                 <th>Due Period</th>
                                 <th>Due Price</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <?php
 
-                            $query = "SELECT * FROM user u, userdue ud, due d, flat f WHERE u.userID = f.userID AND u.userID = ud.userID AND ud.dueID = d.dueID AND duePaymentDate IS NULL";
+                            $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot 
+                            FROM user u, flat f, userFlat uf, userFlatDue ufd, due d 
+                            WHERE u.userID = uf.userID AND uf.flatID = f.flatID AND uf.userFlatID = ufd.userFlatID AND ufd.dueID = d.dueID AND ufd.paymentDate IS NOT NULL
+                            ORDER BY d.duePeriot DESC, f.doorNo";
                             $result = mysqli_query($conn, $query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
                             ?>
+
                                 <tr>
                                     <td><?php echo $row['doorNo']; ?></td>
-                                    <td><?php echo $row['userName'] . $row['userSurname']; ?></td>
+                                    <td><?php echo $row['userName'] . " " . $row['userSurname']; ?></td>
+                                    <td><?php echo $row['userGSM']; ?></td>
                                     <td><?php echo $row['duePeriot']; ?></td>
                                     <td><?php echo $row['duePrice']; ?></td>
                                     <td>PAID</td>
                                 </tr>
+
+
                             <?php } ?>
                         </tbody>
                     </table>
