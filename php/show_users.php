@@ -22,10 +22,13 @@ include "header.php";
                                 <?php
                                 }
                                 ?>
+                                <th scope="col">Birth Date</th>
+                                <th scope="col">Gender</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Surname</th>
                                 <th scope="col">Number</th>
                                 <th scope="col">Number2</th>
+                                <th scope="col">Email</th>
                             </tr>
                         </thead>
 
@@ -51,10 +54,13 @@ include "header.php";
                                 }
                                 ?>
 
+                                <td><?php echo $row['birthDate']; ?></td>
+                                <td><?php echo $row['gender']; ?></td>
                                 <td><?php echo $row['userName']; ?></td>
                                 <td><?php echo $row['userSurname']; ?></td>
                                 <td><?php echo $row['userGSM']; ?></td>
                                 <td><?php echo $row['userGSM_2']; ?></td>
+                                <td><?php echo $row['userEmail']; ?></td>
 
                                 </tr>
 
