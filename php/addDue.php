@@ -15,7 +15,7 @@ include "header.php";
         </div>
 
         <div class="form-floating mb-3">
-            <input class="form-control" type="number" id="duePrice" name="duePrice" placeholder="Due Price">
+            <input class="form-control" required type="number" id="duePrice" name="duePrice" placeholder="Due Price">
             <label for="duePrice">Due Price</label>
         </div>
 

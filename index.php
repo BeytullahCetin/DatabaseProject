@@ -1,6 +1,10 @@
 <?php
 include "php/header.php";
 
+if(isset($_SESSION['user'])){
+  header("Location: php/home.php");
+}
+
 ?>
 
 <div class="container col-md-7 my-3">
