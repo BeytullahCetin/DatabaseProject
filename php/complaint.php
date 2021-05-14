@@ -1,7 +1,95 @@
 <?php
 include "header.php";
 ?>
+<script text="javascript">
+    function formKontrol() {
+        var complaintMessage = document.getElementById("complaintMessage").value;
+
+
+        if (complaintMessage.length == 0 || complaintMessage == null) {
+
+            alert("PLEASE ENTER A COMPLAINT.");
+        } else {
+            alert("YOUR COPLAINT HAS BEEN RECEIVED.");
+
+        }
+    }
+</script>
 <div class="container col-md-5  my-5">
+    <?php
+    if ($_SESSION['user']['isAdmin'] == "admin") { ?>
+        <div class="container col-md-8 my-5">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th>Number</th>
+                        <th>NAME</th>
+                        <th>SURNAME</th>
+                        <th>GSM </th>
+                        <th>Complaint Title </th>
+                        <th>Complaint</th>
+                        <th>Operation</th>
+                    </tr>
+                    <?php
+                    $sayı = 0;
+
+                    $bilgilerisor = $conn2->prepare("SELECT * FROM  complaint c,user u WHERE u.userID=c.userID ORDER BY complaintDate DESC   ");
+                    $bilgilerisor->execute();
+
+                    while ($bilgileriçek = $bilgilerisor->FETCH(PDO::FETCH_ASSOC)) {
+                        $sayı++; ?>
+
+
+
+                        <tr>
+                            <td><? echo $sayı; ?></td>
+                            <td><?php echo $bilgileriçek['userName']; ?></td>
+                            <td><?php echo $bilgileriçek['userSurname']; ?></td>
+                            <td><?php echo $bilgileriçek['userGSM']; ?></td>
+                            <td><?php echo $bilgileriçek['complaintTitle']; ?></td>
+                            <td><?php echo $bilgileriçek['complaintMessage']; ?></td>
+                            <td>
+                                <form action="" method="POST">
+                                    <input type="hidden" name="complaintID" value="<?php echo $bilgileriçek['complaintID']; ?>">
+                                    <input class="btn btn-success" type="submit" name="delete" value="DELETE" onclick="return confirm('Are you sure?')">
+                                </form>
+                            </td>
+                        </tr>
+
+                    <?php } ?>
+                    <?php
+
+                    if (isset($_POST['delete'])) {
+                        $complaintID = $_POST['complaintID'];
+                        $silme = $conn2->prepare("DELETE from complaint where complaintID=:complaintID");
+                        $kont = $silme->execute(array(
+                            'complaintID' => $complaintID
+                        ));
+                    }
+                    if ($kont) {
+
+                        header("Location:addAnnouncement.php");
+                        exit();
+                    } else {
+                        header("Location:addAnnouncement.php");
+                        exit();
+                    }
+                    ?>
+
+                </thead>
+
+            </table>
+
+
+
+
+
+
+
+        </div>
+    <?php
+    }
+    ?>
 
     <form action="complaint.php" method="POST">
         <div class="form-group my-3">
@@ -24,11 +112,11 @@ include "header.php";
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Complaint&Request</label>
 
-            <textarea class="form-control" rows="5" name="complaintMessage" id="complaintMessage"></textarea>
+            <textarea class="form-control" rows="5" name="complaintMessage" id="complaintMessage" required=''></textarea>
         </div>
 
 
-        <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+        <button type="submit" class="btn btn-primary" onclick="formKontrol()" name="submit">Submit</button>
         <button type="reset" class="btn btn-danger" name="reset">Reset</button>
     </form>
 </div>
@@ -60,7 +148,7 @@ if (isset($_POST['submit'])) {
 
     if ($insert) {
 
-        header("Location:complaint.php?durum=OK");
+        header("Location:complaint.php");
         exit();
     } else {
         header("Location:complaint.php?durum=$insert");

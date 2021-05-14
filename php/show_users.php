@@ -88,7 +88,7 @@ include "header.php";
                                 <th scope="col">Surname</th>
                                 <th scope="col">Number</th>
                                 <th scope="col">Number2</th>
-                                <th scope="col">Door No</th>
+                                <th scope="col">Email</th>
                                 <th scope="col">Arrival Date</th>
                             </tr>
                         </thead>
