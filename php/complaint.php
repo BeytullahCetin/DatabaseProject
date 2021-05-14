@@ -1,16 +1,33 @@
 <?php
 include "header.php";
-?>
-<?php
+
+
+
+
+
 if ($_SESSION['user']['isAdmin'] == "admin") { ?>
+
+
     <div class="container col-md-8 my-5">
+        <?php
+        if (isset($_GET['status'])) {
+            if ($_GET['status'] == "successfull") {
+                echo "<br><div class='alert alert-success' role='alert'>Deleted Successfully</div>";
+            } else if ($_GET['status'] == "fail") {
+                echo "<br><div class='alert alert-danger' role='alert'>Delete is Failed</div>";
+            } else {
+                echo "<br><div class='alert alert-warning' role='alert'>Fatal Error</div>";
+            }
+        }
+
+        ?>
         <table class="table table-dark table-striped">
             <thead>
                 <tr>
                     <th>Number</th>
-                    <th>NAME</th>
-                    <th>SURNAME</th>
-                    <th>GSM </th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>GSM</th>
                     <th>Complaint Title </th>
                     <th>Complaint</th>
                     <th>Operation</th>
@@ -18,7 +35,7 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
                 <?php
                 $sayı = 0;
 
-                $bilgilerisor = $conn2->prepare("SELECT * FROM  complaint c,user u WHERE u.userID=c.userID ORDER BY complaintDate DESC   ");
+                $bilgilerisor = $conn2->prepare("SELECT * FROM  complaint c,user u WHERE u.userID=c.userID ORDER BY complaintDate DESC");
                 $bilgilerisor->execute();
 
                 while ($bilgileriçek = $bilgilerisor->FETCH(PDO::FETCH_ASSOC)) {
@@ -34,7 +51,7 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
                         <td>
                             <form action="complaintDB.php" method="POST">
                                 <input type="hidden" name="complaintID" value="<?php echo $bilgileriçek['complaintID']; ?>">
-                                <input class="btn btn-success" type="submit" name="delete" value="DELETE" onclick="return confirm('Are you sure?')">
+                                <input class="btn btn-danger" type="submit" name="delete" value="DELETE" onclick="return confirm('Are you sure?')">
                             </form>
                         </td>
                     </tr>
@@ -51,20 +68,23 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
     <div class="container col-md-5 my-5">
         <form action="complaint.php" method="POST">
             <div class="form-group my-3">
-                <input type="text" name="userName" id="userName" class="form-control" aria-describedby="emailHelp" value="<?php echo  $_SESSION['user']['userName']; ?>" readonly>
                 <label for="userName">Name</label>
+                <input type="text" name="userName" id="userName" class="form-control" aria-describedby="emailHelp" value="<?php echo  $_SESSION['user']['userName']; ?>" readonly>
 
             </div>
             <div class="form-group my-3">
-                <input type="text" name="userSurname" id="userSurname" class="form-control" aria-describedby="emailHelp" value="<?php echo  $_SESSION['user']['userSurname']; ?>" readonly>
                 <label for="userSurname">Surname</label>
+                <input type="text" name="userSurname" id="userSurname" class="form-control" aria-describedby="emailHelp" value="<?php echo  $_SESSION['user']['userSurname']; ?>" readonly>
             </div>
             <div>
+                <label for="complaintTitle">Complaint Title</label>
                 <select class="form-select" aria-label="Default select example" name="complaintTitle" id="complaintTitle">
-                    <option value="Garrage">Garrage</option>
+                    <option value="Apartment">Apartment</option>
+                    <option value="Garbage">Garbage</option>
+                    <option value="Garden">Garden</option>
+                    <option value="Flats">Flats</option>
                     <option value="Other">Other</option>
                 </select>
-                <label for="complaintTitle">Complaint Title</label>
             </div>
             <div class="form-group my-3">
                 <label for="exampleInputEmail1">Complaint&Request</label>
@@ -113,7 +133,6 @@ if (isset($_POST['submit'])) {
 }
 
 ?>
-
 <?php
 include "footer.php";
 ?>

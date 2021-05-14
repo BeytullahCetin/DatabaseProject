@@ -61,7 +61,7 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
     ]);
     
       // Optional; add a title and set the width and height of the chart
-      var options = {'title':'Income Expense', 'width':600, 'height':350};
+      var options = {'title':'Income Expense', 'width':600, 'height':350, 'backgroundColor': 'transparent'};
     
       // Display the chart inside the <div> element with id='piechart'
       var chart = new google.visualization.PieChart(document.getElementById('piechart'));

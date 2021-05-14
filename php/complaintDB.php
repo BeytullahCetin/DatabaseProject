@@ -9,10 +9,10 @@ if (isset($_POST['delete'])) {
 
 if ($kont) {
 
-    header("Location:complaint.php");
+    header("Location:complaint.php?status=successfull");
     exit();
 } else {
-    header("Location:complaint.php");
+    header("Location:complaint.phpstatus=fail");
     exit();
 }
 }
