@@ -26,15 +26,13 @@ include "header.php";
                                 <th scope="col">Surname</th>
                                 <th scope="col">Number</th>
                                 <th scope="col">Number2</th>
-                                <th scope="col">Door No</th>
-                                <th scope="col">Entry Date</th>
                             </tr>
                         </thead>
 
                         <tbody>
                             <?php
 
-                            $query = "SELECT * FROM user u, flat f WHERE u.userID = f.userID";
+                            $query = "SELECT * FROM user u";
                             $result = mysqli_query($conn, $query);
 
                             while ($row = mysqli_fetch_assoc($result)) {
@@ -57,8 +55,6 @@ include "header.php";
                                 <td><?php echo $row['userSurname']; ?></td>
                                 <td><?php echo $row['userGSM']; ?></td>
                                 <td><?php echo $row['userGSM_2']; ?></td>
-                                <td><?php echo $row['doorNo']; ?></td>
-                                <td><?php echo $row['registerDate']; ?></td>
 
                                 </tr>
 

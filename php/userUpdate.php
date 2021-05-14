@@ -75,27 +75,6 @@ include "dbconn2.php";
                         <label for="userEmail">User Email</label>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="basic-addon1" type="text" id="registerDate" name="registerDate" value="<?php echo $pullinfo['registerDate'] ?>" required>
-                        <label for="registerDate">registerDate</label>
-                    </div>
-
-                    <!-- SHOW USERS FLAT NUMBER -->
-                    <?php
-
-                    // DB user check
-                    $checkUserInDB2 = $conn2->prepare("SELECT f.flatID FROM flat f, user u WHERE f.userID = u.userID and u.userID = $selectedUserID");
-                    $checkUserInDB2->execute();
-                    $val = $checkUserInDB2->rowCount();
-                    if ($val != 0) {
-                        $pullinfo = $checkUserInDB2->fetch(PDO::FETCH_ASSOC);
-                        $valueFlat = $pullinfo['flatID'];
-                    }
-                    ?>
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
-                        <label for="userFlatno">User Flat No</label>
-                    </div>
 
                     <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
                     <label for="submit"></label>

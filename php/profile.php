@@ -8,6 +8,20 @@ include "header.php";
 <main class="main-content">
 
     <div class="main-item">
+        <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
+        <?php
+
+        if (isset($_GET['Update'])) {
+            if ($_GET['Update'] == "Successfull") {
+                echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
+            } elseif ($_GET['Update'] == "Fail") {
+                echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
+            } else {
+                echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
+            }
+        }
+        ?>
+        
         <form class="was-validated" action="#" method="POST">
 
             <div class="label">
@@ -56,26 +70,6 @@ include "header.php";
                     <input class="form-control" id="basic-addon1" type="password" id="password" name="password" placeholder="New Password" required>
                     <label for="password">User New Password</label>
                 </div>
-
-                <!-- SHOW USERS FLAT NUMBER -->
-                <?php
-                include "dbconn2.php";
-                $userIDinDB = $_SESSION['userID'];
-                $valueFlat = -1;
-                // DB user check
-                $checkUserInDB = $conn2->prepare("SELECT f.flatID FROM flat f, user u WHERE f.userID = u.userID and u.userID = $userIDinDB");
-                $checkUserInDB->execute();
-                $int = $checkUserInDB->rowCount();
-                if ($int != 0) {
-                    $pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-                    $valueFlat = $pullinfo['flatID'];
-                }
-                ?>
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="number" id="userFlatno" name="userFlatno" value="<?php echo $valueFlat ?>" required>
-                    <label for="userFlatno">User Flat No</label>
-                </div>
-
             </div>
 
             <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
@@ -109,8 +103,7 @@ include "header.php";
                 userSurname=:userSurname,
                 userGSM=:userGSM,
                 userGSM_2=:userGSM_2,
-                userEmail=:userEmail,
-                registerDate=:registerDate
+                userEmail=:userEmail
 
                 where userID={$_SESSION['userID']}
                 ");
@@ -124,8 +117,7 @@ include "header.php";
                     'userSurname' => $_POST['userSurname'],
                     'userGSM' => $_POST['userGSM'],
                     'userGSM_2' => $_POST['userGSM_2'],
-                    'userEmail' => $_POST['userEmail'],
-                    'registerDate' => $_SESSION['user']['registerDate']
+                    'userEmail' => $_POST['userEmail']
                 ));
 
                 // WARNING 
@@ -161,23 +153,7 @@ include "header.php";
             }
         }
         ?>
-
-        <!--UPDATE SUCCESSFUL OR FAILED MASSAGE-->
-        <?php
-
-        if (isset($_GET['Update'])) {
-            if ($_GET['Update'] == "Successfull") {
-                echo "<br><div class='alert alert-success' role='alert'>Update is Successful</div>";
-            } elseif ($_GET['Update'] == "Fail") {
-                echo "<br><div class='alert alert-danger' role='alert'>Update is Failed</div>";
-            } else {
-                echo "<br><div class='alert alert-danger' role='alert'>FATAL ERROR</div>";
-            }
-        }
-        ?>
-
     </div>
-
 </main>
 
 <?php
