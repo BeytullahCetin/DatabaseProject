@@ -62,12 +62,12 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
 <?php } else { ?>
 
     <div class="container col-md-5 my-5">
-    <?php
+        <?php
         if (isset($_GET['status'])) {
             if ($_GET['status'] == "successfull") {
-                echo "<br><div class='alert alert-success' role='alert'>Deleted Successfully</div>";
+                echo "<br><div class='alert alert-success' role='alert'> Successfully</div>";
             } else if ($_GET['status'] == "fail") {
-                echo "<br><div class='alert alert-danger' role='alert'>Delete is Failed</div>";
+                echo "<br><div class='alert alert-danger' role='alert'> Failed</div>";
             } else {
                 echo "<br><div class='alert alert-warning' role='alert'>Fatal Error</div>";
             }
@@ -92,6 +92,28 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
                     <option value="Other">Other</option>
                 </select>
             </div>
+
+            <div>
+                <label for="complaintFlat">Flat Number</label>
+                <select class="form-select" aria-label="Default select example" name="complaintFlat" id="complaintFlat">
+
+                    <?php
+
+                   $userID=$_SESSION['userID'];
+
+                   $query = "SELECT * FROM user u, userflat uf WHERE u.userID=$userID AND uf.userID=$userID";
+                   $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+
+                        ?>
+                        <option value="<?php echo $row['flatID'] ; ?>"><?php echo $row['flatID'] ; ?></option>
+
+
+                    <?php } 
+                    ?>
+                 </select>
+            </div>
+
             <div class="form-group my-3">
                 <label for="exampleInputEmail1">Complaint&Request</label>
 
@@ -108,6 +130,7 @@ include 'dbconn2.php';
 
 if (isset($_POST['submit'])) {
     $complaintTitle = $_POST['complaintTitle'];
+    $complaintFlat = $_POST['complaintFlat'];
     $complaintMessage = $_POST['complaintMessage'];
     $userID = $_SESSION['userID'];
     $complaintDate = date("Y/m/d");
@@ -118,6 +141,7 @@ if (isset($_POST['submit'])) {
 		userID=:userID,
 		complaintTitle=:complaintTitle,
 		complaintMessage=:complaintMessage,
+        complaintFlat=:complaintFlat,
 		complaintDate=:complaintDate
 	");
 
@@ -125,6 +149,7 @@ if (isset($_POST['submit'])) {
         'userID' => $userID,
         'complaintTitle' => $complaintTitle,
         'complaintMessage' => $complaintMessage,
+        'complaintFlat' => $complaintFlat,
         'complaintDate' => $complaintDate
     ));
 

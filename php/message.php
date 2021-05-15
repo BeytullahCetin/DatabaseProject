@@ -62,7 +62,19 @@
             </div>
             <div class="d-grid gap-2 col-4" style="border: 1px solid;">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">.sadasd..</div>
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <div>
+                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+                            <button class="btn btn-primary">send</button>
+                        </div>
+
+                    </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">..fghfghfgh.</div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">..jlşljkşklş.</div>
                     <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">..4645648.</div>
