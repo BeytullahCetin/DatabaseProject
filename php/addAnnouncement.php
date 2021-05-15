@@ -3,9 +3,9 @@ include "header.php";
 ?>
 <script text="javascript">
     function formKontrol() {
-        var announcement = document.getElementById("announcement").value;
+        var announcementText = document.getElementById("announcementText").value;
 
-        if (announcement.length == 0 || announcement == null) {
+        if (announcementText.length == 0 || announcementText == null) {
 
             alert("PLEASE ENTER A ANNOUNCEMENT.");
         } else {
@@ -22,15 +22,21 @@ include "header.php";
 
         <div>
             <label for="exampleInputEmail1"> Announcement Color </label>
-            <select class="form-select" aria-label="Default select example" name="announcementColor">
+            <select class="form-select" aria-label="Default select example" name="color">
                 <option value="red">red</option>
                 <option value="green">green</option>
+                <option value="yellow">yellow</option>
+                <option value="black">black</option>
             </select>
+        </div>
+        <div class="form-group my-3">
+            <label for="exampleInputEmail1">Announcement Title</label>
+            <input class="form-control" required type="text" id="announcementTitle" name="announcementTitle" required=''>
         </div>
 
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Announcement</label>
-         <textarea class="form-control" rows="5" name="announcement" id="announcement" required=''></textarea>
+         <textarea class="form-control" rows="5" name="announcementText" id="announcementText" required=''></textarea>
         </div>
 
         <div class="d-grid gap-2 mb-3">
@@ -42,21 +48,24 @@ include "header.php";
 <?php
 
 if (isset($_POST['submit'])) {
-    $announcementText = $_POST['announcementColor'];
-    $announcementTitle = $_POST['announcement'];
+    $color = $_POST['color'];
+    $announcementText = $_POST['announcementText'];
+    $announcementTitle = $_POST['announcementTitle'];
     $announcementTime = date("Y/m/d");
     
 
     $kaydet = $conn2->prepare("INSERT INTO announcement set       
-		announcementTitle=:announcementTitle,
 		announcementText=:announcementText,
+        announcementTitle=:announcementTitle,
+		color=:color,
 		announcementTime=:announcementTime
 
 	");
 
     $insert = $kaydet->execute(array(
-        'announcementTitle' => $announcementTitle,
+        'color' => $color,
         'announcementText' => $announcementText,
+        'announcementTitle' => $announcementTitle,
         'announcementTime' => $announcementTime
     ));
 
@@ -65,7 +74,7 @@ if (isset($_POST['submit'])) {
         header("Location:addAnnouncement.php");
         exit();
     } else {
-        header("Location:complaint.php?durum=$insert");
+        header("Location:announcement.php?durum=$insert");
         exit();
     }
 }
