@@ -1,122 +1,67 @@
 <?php include "header.php" ?>
 
 <main>
-    <!-- <div class="container">
-        <div class="row" style="margin: 2rem; padding: 2rem;">
-            <div class="col" style="background-color: grey;">
-                <p>USERS LIST</p>
 
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a class="text-decoration-none" href="message.php?asd">
-                            <div class="d-grid gap-2"><button type="button" class="btn btn-primary">Ahmet</button></div>
-                        </a>
-                    <li>
-                    <li class="list-group-item">
-                        <a class="text-decoration-none" href="message.php?asd">
-                            <div class="d-grid gap-2"><button type="button" class="btn btn-primary">Ahmet</button></div>
-                        </a>
-                    <li>
-                    <li class="list-group-item">
-                        <a class="text-decoration-none" href="message.php?asd">
-                            <div class="d-grid gap-2"><button type="button" class="btn btn-primary">Ahmet</button></div>
-                        </a>
-                    <li>
-                </ul>
+    <div style=" margin: 5rem;">
 
 
-            </div>
-            <div class="col" style="background-color: brown;">
-                <p>MESSAGE LIST</p>
-                <div>
-                    <p class="text-end">i send message</p>
-                    <p class="text-start">you send message to me</p>
-                    <p class="text-end">i send message</p>
-                    <p class="text-start">you send message to me</p>
-                    <p class="text-end">i send message</p>
-                    <p class="text-start">you send message to me</p>
-                    <p class="text-end">i send message</p>
-                    <p class="text-start">you send message to me</p>
 
-                </div>
-                <div>
-                    <textarea name="" id="" cols="80" rows="5">
-
-                    </textarea>
-                    <button class="btn btn-primary">send</button>
-                </div>
-
-
-            </div>
-        </div>
-    </div> -->
-    <div class="container" style=" margin: 5rem;">
         <div class="row">
-            <div class="d-grid gap-2 col-4">
+            <div class="d-grid gap-2 col-6">
                 <div class="list-group d-grid gap-2" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
+
+
+                    <?php
+
+                    $query = "SELECT userID, userName, userSurname FROM user 
+                    WHERE userID <> " . $_SESSION['userID'] . " ORDER BY userID";
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                    ?>
+                        <a class="list-group-item list-group-item-action" data-bs-toggle="list" href="#box<?php echo $row['userID']; ?>" role="tab"><?php echo $row['userName'] . " " . $row['userSurname'] ?></a>
+                    <?php
+                    }
+                    ?>
+
                 </div>
             </div>
 
-            <div class="d-grid gap-2 col-md-auto" style="border: 1px solid; margin-left: 10rem;">
+
+
+
+            <div class="d-grid gap-2 col-6" style="border: 1px solid;">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
 
-                        <form action="">
-                            <hr>
-                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+                    <?php
 
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="submit">Send</button>
-                            </div><br>
-                        </form>
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_array($result)) {
+                    ?>
+                        <div class="tab-pane fade" id="box<?php echo $row['userID']; ?>" role="tabpanel">
 
+                            <p class="text-end">i send message</p>
+                            <p class="text-start">you send message to me</p>
 
-                    </div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
+                            <form action="messageDB.php">
+                                <hr>
+                                <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
 
-                        <form action="">
-                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary" type="submit">Send </button>
+                                </div><br>
+                            </form>
 
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="submit">Send</button>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
-                        <p class="text-end">i send message</p>
-                        <p class="text-start">you send message to me</p>
+                        </div>
 
-                        <form action="">
-                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+                    <?php
+                    }
+                    ?>
 
-                            <div class="d-grid gap-2">
-                                <button class="btn btn-primary" type="submit">Send</button>
-                            </div>
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 </main>
 
 <?php include "footer.php" ?>
