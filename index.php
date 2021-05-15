@@ -1,7 +1,7 @@
 <?php
 include "php/header.php";
 
-if(isset($_SESSION['user'])){
+if (isset($_SESSION['user'])) {
   header("Location: php/home.php");
 }
 
@@ -64,6 +64,7 @@ if(isset($_SESSION['user'])){
     </div>
   </div>
   <div style="height: 100px;"></div>
-  <?php
-    include "php/footer.php";
-  ?>
+</div>
+<?php
+include "php/footer.php";
+?>
