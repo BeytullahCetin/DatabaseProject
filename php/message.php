@@ -50,17 +50,17 @@
             </div>
         </div>
     </div> -->
-    <div style=" margin: 5rem;">
+    <div class="container" style=" margin: 5rem;">
         <div class="row">
             <div class="d-grid gap-2 col-4">
                 <div class="list-group d-grid gap-2" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action" id="list-home-list" data-bs-toggle="list" href="#list-home" role="tab" aria-controls="list-home">Home</a>
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-profile" role="tab" aria-controls="list-profile">Profile</a>
                     <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-messages" role="tab" aria-controls="list-messages">Messages</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-settings" role="tab" aria-controls="list-settings">Settings</a>
                 </div>
             </div>
-            <div class="d-grid gap-2 col-4" style="border: 1px solid;">
+
+            <div class="d-grid gap-2 col-md-auto" style="border: 1px solid; margin-left: 10rem;">
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                         <p class="text-end">i send message</p>
@@ -69,15 +69,50 @@
                         <p class="text-start">you send message to me</p>
                         <p class="text-end">i send message</p>
                         <p class="text-start">you send message to me</p>
-                        <div>
+
+                        <form action="">
+                            <hr>
                             <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
-                            <button class="btn btn-primary">send</button>
-                        </div>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div><br>
+                        </form>
+
 
                     </div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">..fghfghfgh.</div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">..jlşljkşklş.</div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">..4645648.</div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+
+                        <form action="">
+                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+                        <p class="text-end">i send message</p>
+                        <p class="text-start">you send message to me</p>
+
+                        <form action="">
+                            <textarea name="" id="" cols="60" rows="2">adasdasdasd</textarea>
+
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary" type="submit">Send</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

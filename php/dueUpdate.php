@@ -14,6 +14,8 @@ $due = mysqli_fetch_array(mysqli_query($conn, $query));
 
     <form class="my-3" action="dueUpdateDB.php" method="POST">
 
+        <input type="hidden" value="<?php echo $dueID; ?>" name="dueID">
+
         <div class="form-floating mb-3">
             <input class="form-control" required type="text" id="dueTitle" name="dueTitle" placeholder="Due Title" value="<?php echo $due['dueTitle']; ?>">
             <label for="dueTitle">Due Title</label>
