@@ -31,13 +31,13 @@ include "header.php";
 				
 
 				while ($bilgileriçek = $bilgilerisor->FETCH(PDO::FETCH_ASSOC)) {  
-					$color=$bilgileriçek['announcementText'];
+					$color=$bilgileriçek['color'];
 					?>
 				     
 
 
 					<div class="carousel-item " style="color: white; background-color:<?php echo $color ;?> ">
-						<h1> <?php echo $bilgileriçek['announcementTitle']; ?> </h1>
+						<h1> <?php echo $bilgileriçek['announcementText']; ?> </h1>
 					</div>
 				<?php
 

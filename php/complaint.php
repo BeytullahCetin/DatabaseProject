@@ -1,10 +1,6 @@
 <?php
 include "header.php";
 
-
-
-
-
 if ($_SESSION['user']['isAdmin'] == "admin") { ?>
 
 
@@ -66,6 +62,16 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
 <?php } else { ?>
 
     <div class="container col-md-5 my-5">
+    <?php
+        if (isset($_GET['status'])) {
+            if ($_GET['status'] == "successfull") {
+                echo "<br><div class='alert alert-success' role='alert'>Deleted Successfully</div>";
+            } else if ($_GET['status'] == "fail") {
+                echo "<br><div class='alert alert-danger' role='alert'>Delete is Failed</div>";
+            } else {
+                echo "<br><div class='alert alert-warning' role='alert'>Fatal Error</div>";
+            }
+        } ?>
         <form action="complaint.php" method="POST">
             <div class="form-group my-3">
                 <label for="userName">Name</label>
@@ -124,10 +130,10 @@ if (isset($_POST['submit'])) {
 
     if ($insert) {
 
-        header("Location:complaint.php");
+        header("Location:complaint.php?status=successfull");
         exit();
     } else {
-        header("Location:complaint.php?durum=$insert");
+        header("Location:complaint.php??status=fail");
         exit();
     }
 }

@@ -8,9 +8,10 @@ include "header.php";
             <tr>
                 <th scope="col">Number</th>
                 <th scope="col">Announcement Color</th>
+                <th scope="col">Announcement Title</th>
                 <th scope="col">Announcement </th>
                 <th scope="col">Announcement Date </th>
-                
+
                 <th scope="col">Operation</th>
                 <th scope="col">Operation</th>
             </tr>
@@ -26,20 +27,21 @@ include "header.php";
 
                 <tr>
                     <td><?php echo $sayı; ?></td>
-                    <td><?php echo $bilgileriçek['announcementText']; ?></td>
+                    <td><?php echo $bilgileriçek['color']; ?></td>
                     <td><?php echo $bilgileriçek['announcementTitle']; ?></td>
+                    <td><?php echo $bilgileriçek['announcementText']; ?></td>
                     <td><?php echo $bilgileriçek['announcementTime']; ?></td>
                     <td>
-                    <form action="updateAnnouncement.php" method="POST">
-                        <input type="hidden" name="announcementID" value="<?php echo $bilgileriçek['announcementID']; ?>">
-                        <input class="btn btn-primary" type="submit" name="submit" value="UPDATE">
-                    </form>
+                        <form action="updateAnnouncement.php" method="POST">
+                            <input type="hidden" name="announcementID" value="<?php echo $bilgileriçek['announcementID']; ?>">
+                            <input class="btn btn-primary" type="submit" name="submit" value="UPDATE">
+                        </form>
                     </td>
                     <td>
-                    <form action="announcementDB.php" method="POST">
-                        <input type="hidden" name="announcementID" value="<?php echo $bilgileriçek['announcementID']; ?>">
-                        <input class="btn btn-danger" type="submit" name="submit" onclick="return confirm('Are you sure?')" value="DELETE" onclick="">
-                    </form>
+                        <form action="announcementDB.php" method="POST">
+                            <input type="hidden" name="announcementID" value="<?php echo $bilgileriçek['announcementID']; ?>">
+                            <input class="btn btn-danger" type="submit" name="submit" onclick="return confirm('Are you sure?')" value="DELETE" onclick="">
+                        </form>
                     </td>
 
                 </tr>

@@ -26,7 +26,8 @@ if (isset($_POST['update'])) {
 	$announcmeentID=$_POST['announcementID'];
 
 	$kaydet=$conn2->prepare("UPDATE announcement set
-		announcementText=:announcementText,             
+		announcementText=:announcementText,   
+        color=:color,          
 		announcementTitle=:announcementTitle
 		where announcementID={$_POST['announcementID']}
 
@@ -36,6 +37,7 @@ if (isset($_POST['update'])) {
 	$insert=$kaydet->execute(array(
 		'announcementText'=>$_POST['announcementText'],
 		'announcementTitle'=>$_POST['announcementTitle'],
+        'color'=>$_POST['color'],
 		
 	));
     if($insert){
