@@ -3,11 +3,12 @@ session_start();
 ob_start();
 include "dbconn.php";
 
-$duePeriot = date("Y-m-d", strtotime($_POST['duePeriot']));
+$dueID = $_POST['dueID'];
+$duePeriot = $_POST['duePeriot'];
 $duePrice = $_POST['duePrice'];
 $dueTitle = $_POST['dueTitle'];
 
-$query = "UPDATE due SET dueTitle = '$dueTitle', duePrice =$duePrice, duePeriot = '$duePeriot'";
+$query = "UPDATE due SET dueTitle = '$dueTitle', duePrice =$duePrice, duePeriot = '$duePeriot' WHERE dueID = $dueID";
 if(mysqli_query($conn, $query)){
     header("Location: dues.php?updateSuccesfull");
 }else{

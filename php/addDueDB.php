@@ -23,9 +23,9 @@ if (isset($_POST['everyoneDueSubmit'])) {
         while ($row = mysqli_fetch_array($result)) {
             $query = "INSERT INTO userFlatDue (dueID, userFlatID) VALUES ($last_id, " . $row['userFlatID'] . ")";
             if (mysqli_query($conn, $query)) {
-                echo "başarılı";
+                header("Location: showDues.php?successfull");
             } else {
-                echo "başarısız";
+                header("Location: showDues.php?somethingWentWrong");
             }
         }
     } else {
@@ -43,10 +43,9 @@ if (isset($_POST['everyoneDueSubmit'])) {
 
             $query = "INSERT INTO userFlatDue (dueID, userFlatID) VALUES ($last_id, $userFlatID)";
             if (mysqli_query($conn, $query)) {
-                echo "başarılı";
+                header("Location: showDues.php?successfull");
             } else {
-
-                echo "başarısız";
+                header("Location: showDues.php?somethingWentWrong");
             }
 
     } else {
