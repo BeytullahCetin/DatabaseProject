@@ -25,8 +25,9 @@ include "header.php";
                                     <th>Door No</th>
                                     <th>Name - Surname</th>
                                     <th>GSM</th>
-                                    <th>Due Period</th>
+                                    <th>Due Date</th>
                                     <th>Due Price</th>
+                                    <th>Due Title</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -34,7 +35,7 @@ include "header.php";
                             <tbody>
                                 <?php
 
-                                $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot, ufd.userFlatDueID 
+                                $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot, d.dueTitle, ufd.userFlatDueID 
                     FROM user u, flat f, userFlat uf, userFlatDue ufd, due d 
                     WHERE u.userID = uf.userID AND uf.flatID = f.flatID AND uf.userFlatID = ufd.userFlatID AND ufd.dueID = d.dueID AND ufd.paymentDate IS NULL
                     ORDER BY d.duePeriot DESC, f.doorNo";
@@ -55,6 +56,7 @@ include "header.php";
                                         <td><?php echo $row['userGSM']; ?></td>
                                         <td><?php echo $row['duePeriot']; ?></td>
                                         <td><?php echo $row['duePrice']; ?></td>
+                                        <td><?php echo $row['dueTitle'] ?></td>
                                         <td>NOT PAID</td>
                                     </tr>
 
@@ -80,8 +82,9 @@ include "header.php";
                                     <th>Door No</th>
                                     <th>Name - Surname</th>
                                     <th>GSM</th>
-                                    <th>Due Period</th>
+                                    <th>Due Date</th>
                                     <th>Due Price</th>
+                                    <th>Due Title</th>
                                     <th>Status</th>
                                 </tr>
                             </thead>
@@ -89,10 +92,10 @@ include "header.php";
                             <tbody>
                                 <?php
 
-                                $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot 
-                    FROM user u, flat f, userFlat uf, userFlatDue ufd, due d 
-                    WHERE u.userID = uf.userID AND uf.flatID = f.flatID AND uf.userFlatID = ufd.userFlatID AND ufd.dueID = d.dueID AND ufd.paymentDate IS NOT NULL
-                    ORDER BY d.duePeriot DESC, f.doorNo";
+                                $query = "SELECT u.userName, u.userSurname, u.userGSM, f.doorNo, d.duePrice, d.duePeriot, d.dueTitle 
+                                FROM user u, flat f, userFlat uf, userFlatDue ufd, due d 
+                                WHERE u.userID = uf.userID AND uf.flatID = f.flatID AND uf.userFlatID = ufd.userFlatID AND ufd.dueID = d.dueID AND ufd.paymentDate IS NOT NULL
+                                ORDER BY d.duePeriot DESC, f.doorNo";
                                 $result = mysqli_query($conn, $query);
 
                                 while ($row = mysqli_fetch_assoc($result)) {
@@ -104,6 +107,7 @@ include "header.php";
                                         <td><?php echo $row['userGSM']; ?></td>
                                         <td><?php echo $row['duePeriot']; ?></td>
                                         <td><?php echo $row['duePrice']; ?></td>
+                                        <td><?php echo $row['dueTitle'] ?></td>
                                         <td>PAID</td>
                                     </tr>
 
