@@ -79,10 +79,10 @@ include "header.php";
                     </div>
                 </div>
 
-                <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
-                <label for="submit"></label>
-                <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" required>
-                <label for="reset"></label>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" value="Update" required>
+                <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" value="Reset" required>
+                </div>
             </form>
         </div>
     </div>
