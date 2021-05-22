@@ -16,6 +16,9 @@ include "dbconn2.php";
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+
 	<link rel="stylesheet" href="../css/login/style.css">
 </head>
 
@@ -32,14 +35,22 @@ include "dbconn2.php";
 					<div class="wrap d-md-flex">
 						<div class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center order-md-last">
 							<div class="text w-100">
-								<h2>Welcome to the system</h2>
-								<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Suscipit, adipisci doloribus nostrum iure laboriosam deleniti aliquid soluta nihil repellendus illo dignissimos! Earum, iusto aliquid odit magni doloremque nesciunt accusamus quibusdam?</p>
+								<h2>Welcome</h2>
+								<p>Hi, have a good time walking around the system. Try not to forget your bills. If you have any complaints, state them precisely. we are all human after all.</p>
 							</div>
 						</div>
 						<div class="login-wrap p-4 p-lg-5">
 							<div class="d-flex">
 								<div class="w-100">
 									<h3 class="mb-4">Sign In</h3>
+									<?php
+									if (isset($_GET['fail'])) {
+										if ($_GET['fail'] == "password") { ?>
+											<div class='alert alert-fail mx-0 my-0 px-0 py-0' role='alert'><hr> Password is wrong <hr></div>
+									<?php
+										}
+									}
+									?>
 								</div>
 							</div>
 
@@ -81,15 +92,15 @@ include "dbconn2.php";
 								// DB user check
 								$checkUserInDB = $conn2->prepare("SELECT * FROM user WHERE userName=:userName AND password=:password");
 								$checkUserInDB->execute(array(
-								   'userName' => $userName,
-								   'password' => $password
+									'userName' => $userName,
+									'password' => $password
 								));
 								$int = $checkUserInDB->rowCount();
 
 								// If user find, then int equals 1 and sessions stared
 								if ($int == 1) {
 									$pullinfo = $checkUserInDB->fetch(PDO::FETCH_ASSOC);
-									
+
 									// Create sessions
 									$_SESSION['userID'] = $pullinfo['userID'];
 									$_SESSION['user'] = $pullinfo;
@@ -123,9 +134,12 @@ include "dbconn2.php";
 		</div>
 	</section>
 
+
+
 	<script src="../js/jquery.min.js"></script>
 	<script src="../js/popper.js"></script>
 	<script src="../js/bootstrap.min.js"></script>
 	<script src="../js/main.js"></script>
 </body>
+
 </html>

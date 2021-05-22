@@ -36,14 +36,11 @@ include "header.php";
 				     
 
 
-					<div class="carousel-item " style="color: white; background-color:<?php echo $color ;?> ">
+					<div class="carousel-item " style="color: white; background-color:<?php echo $color ?>;">
 						<h1> <?php echo $bilgileriçek['announcementText']; ?> </h1>
 					</div>
 				<?php
-
-
-
-					$sayı++;
+					$sayi++;
 				} ?>
 
 			</div>

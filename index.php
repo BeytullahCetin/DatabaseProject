@@ -37,30 +37,13 @@ if (isset($_SESSION['user'])) {
     </div>
 
     <div class="my-3">
+    <hr>
       <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, omnis. Commodi quam accusamus pariatur in
-        voluptate quibusdam fugit quas, impedit voluptates minima corporis officiis sunt voluptas autem alias cum,
-        praesentium architecto! Asperiores, doloribus hic, dolorum eos sit praesentium pariatur modi fuga a id amet
-        ipsam. At sunt id ipsa delectus facilis hic quae corrupti, a soluta explicabo cumque nostrum corporis
-        quibusdam provident eum dolore illo laborum perferendis nihil quo ipsam velit. Omnis error dolorem mollitia
-        officia molestiae nisi ipsum harum! Accusantium commodi vero fugiat pariatur id officiis, recusandae dolorum
-        temporibus totam facilis ipsa hic aperiam autem nemo mollitia modi, cumque facere harum ipsam sint quasi!
-        Magnam quam eius ipsum quibusdam id corrupti necessitatibus minus aut nam asperiores repellendus.Lorem ipsum
-        dolor sit amet consectetur, adipisicing elit. Dicta, omnis. Commodi quam accusamus pariatur in voluptate
-        quibusdam fugit quas, impedit voluptates minima corporis officiis sunt voluptas autem alias cum, praesentium
-        architecto! Asperiores, doloribus hic, dolorum eos sit praesentium pariatur modi fuga a id amet ipsam.
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dicta, omnis. Commodi quam accusamus pariatur in
-        voluptate quibusdam fugit quas, impedit voluptates minima corporis officiis sunt voluptas autem alias cum,
-        praesentium architecto! Asperiores, doloribus hic, dolorum eos sit praesentium pariatur modi fuga a id amet
-        ipsam. At sunt id ipsa delectus facilis hic quae corrupti, a soluta explicabo cumque nostrum corporis
-        quibusdam provident eum dolore illo laborum perferendis nihil quo ipsam velit. Omnis error dolorem mollitia
-        officia molestiae nisi ipsum harum! Accusantium commodi vero fugiat pariatur id officiis, recusandae dolorum
-        temporibus totam facilis ipsa hic aperiam autem nemo mollitia modi, cumque facere harum ipsam sint quasi!
-        Magnam quam eius ipsum quibusdam id corrupti necessitatibus minus aut nam asperiores repellendus.Lorem ipsum
-        dolor sit amet consectetur, adipisicing elit. Dicta, omnis. Commodi quam accusamus pariatur in voluptate
-        quibusdam fugit quas, impedit voluptates minima corporis officiis sunt voluptas autem alias cum, praesentium
-        architecto! Asperiores, doloribus hic, dolorum eos sit praesentium pariatur modi fuga a id amet ipsam.
+        Welcome to the apartment management system. Here you can comfortably do any work that needs to be done in apartments. 
+        It includes many processes from paying your bill to the complaint section. 
+        Thanks to its comfortable and informative use, you can easily access information in case you experience any difficulties.
       </p>
+      <hr>
     </div>
   </div>
   <div style="height: 100px;"></div>
