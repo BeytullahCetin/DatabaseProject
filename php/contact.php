@@ -3,6 +3,9 @@ include "header.php";
 ?>
 <div class="container my-4">
 
+<h1 class="text-center">Contact</h1>
+                <hr>
+
     <div class="col">
         <div class="row">
             <div class="col">

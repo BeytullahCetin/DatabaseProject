@@ -2,7 +2,10 @@
 
 <main>
 
-    <div style=" margin: 5rem;">
+    <div style="margin-bottom: 5rem; margin-left: 5rem; margin-right: 5rem;" class="my-4">
+
+    <h1 class="text-center">Messages</h1>
+                <hr>
 
         
 

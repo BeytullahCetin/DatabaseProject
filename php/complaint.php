@@ -4,7 +4,11 @@ include "header.php";
 if ($_SESSION['user']['isAdmin'] == "admin") { ?>
 
 
-    <div class="container col-md-8 my-5">
+    <div class="container col-md-8 my-4">
+
+    <h1 class="text-center">Reports</h1>
+                <hr>
+
         <?php
         if (isset($_GET['status'])) {
             if ($_GET['status'] == "successfull") {

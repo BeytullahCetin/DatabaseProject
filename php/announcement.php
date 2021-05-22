@@ -1,7 +1,11 @@
 <?php
 include "header.php";
 ?>
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Announcements</h1>
+                <hr>
+
     <table class="table table-dark table-striped">
 
         <thead>

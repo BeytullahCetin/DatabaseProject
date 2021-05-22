@@ -71,7 +71,10 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
 
 ?>
 
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Report</h1>
+                <hr>
 
     <div class="d-flex container justify-content-center">
         <div id='piechart'></div>

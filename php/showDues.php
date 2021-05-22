@@ -2,7 +2,10 @@
 include "header.php";
 ?>
 
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Dues</h1>
+                <hr>
 
     <?php
     if ($_SESSION['user']['isAdmin'] == "admin") {

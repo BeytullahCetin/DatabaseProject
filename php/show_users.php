@@ -1,7 +1,10 @@
 <?php
 include "header.php";
 ?>
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Users</h1>
+                <hr>
 
     <div class="accordion" id="accordionExample">
 
