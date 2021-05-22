@@ -41,6 +41,11 @@ include "dbconn2.php";
                     </div>
 
                     <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="password" id="password" name="password" required>
+                        <label for="password">User Password</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
                         <input class="form-control" id="basic-addon1" type="tel" id="userGSM" name="userGSM" required>
                         <label for="userGSM">User GSM - 1</label>
                     </div>
@@ -78,10 +83,7 @@ include "dbconn2.php";
                         <label for="isAdmin">Role</label>
                     </div>
 
-                    <div class="form-floating mb-3">
-                        <input class="form-control" id="basic-addon1" type="password" id="password" name="password" required>
-                        <label for="password">User Password</label>
-                    </div>
+                    
                 </div>
 
 
