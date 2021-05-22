@@ -1,23 +1,22 @@
 <?php
 include "header.php";
 ?>
-  <link rel="stylesheet" href="../css/home.css">  
+<link rel="stylesheet" href="../css/home.css">
 
 <main class="main-content">
-	<section class="duyurular py-5">
 
-		<div class="duyurular text-center ">
 
-			<h1 style="color:black; text-decoration: underline;">ANNOUNCEMENTS</h1>
-		</div>
-	</section>
+	<div class="text-center py-5 col-md-3 mx-auto">
+		<h1>ANNOUNCEMENTS</h1>
+		<hr>
+	</div>
 
 
 
 	<section class="bg py-3" style="background-color: black;">
 		<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
 
-			<div class="carousel-inner text-center" style="padding-top: 45px;">
+			<div class="carousel-inner text-center">
 
 				<div class="carousel-item active" style="color: white; background-color:black ; ">
 					<h1>WELCOME ABG APARTMENT</h1>
@@ -28,16 +27,20 @@ include "header.php";
 				$bilgilerisor = $conn2->prepare("SELECT * FROM  announcement  ORDER BY announcementID DESC LIMIT 3");
 				$bilgilerisor->execute();
 				$sayi = 0;
-				
-
-				while ($bilgileriçek = $bilgilerisor->FETCH(PDO::FETCH_ASSOC)) {  
-					$color=$bilgileriçek['color'];
-					?>
-				     
 
 
-					<div class="carousel-item " style="color: white; background-color:<?php echo $color ?>;">
-						<h1> <?php echo $bilgileriçek['announcementText']; ?> </h1>
+				while ($bilgileriçek = $bilgilerisor->FETCH(PDO::FETCH_ASSOC)) {
+					$color = $bilgileriçek['color'];
+				?>
+
+
+
+					<div class="carousel-item" style="color: white; background-color:<?php echo $color ?>;">
+						<div>
+							<h2>
+								<p class="text-break"><?php echo $bilgileriçek['announcementText']; ?></p>
+							</h2>
+						</div>
 					</div>
 				<?php
 					$sayi++;
@@ -54,8 +57,10 @@ include "header.php";
 			</a>
 		</div>
 	</section>
+	<br><br><br><br>
 
-	
+
+
 
 
 

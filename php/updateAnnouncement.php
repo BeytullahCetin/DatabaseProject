@@ -13,7 +13,7 @@ $bilgilerim_cek = $bilgilerim_sor->fetch(PDO::FETCH_ASSOC);
 
         <div>
             <label for="exampleInputEmail1"> Announcement Color </label>
-            <select class="form-select" aria-label="Default select example"   name="color">
+            <select class="form-select" aria-label="Default select example" name="color">
                 <option value="red">red</option>
                 <option value="green">green</option>
             </select>
@@ -29,12 +29,12 @@ $bilgilerim_cek = $bilgilerim_sor->fetch(PDO::FETCH_ASSOC);
         </div>
 
         <div class="d-grid gap-2 mb-3">
-           <input type="hidden" name="announcementID" value="<?php echo $bilgilerim_cek['announcementID']; ?>"> 
+            <input type="hidden" name="announcementID" value="<?php echo $bilgilerim_cek['announcementID']; ?>">
             <input type="submit" class="btn btn-primary" onclick="formKontrol()" id="update" name="update">
         </div>
 
     </form>
-
-    <?php
-    include "footer.php";
-    ?>
+</div>
+<?php
+include "footer.php";
+?>
