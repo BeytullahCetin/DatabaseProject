@@ -26,17 +26,7 @@ include "header.php";
 
             <div class="label">
 
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="date" id="birthDate" name="birthDate" value="<?php echo $_SESSION['user']['birthDate'] ?>" required>
-                    <label for="birthDate">Birth Date</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="text" id="gender" name="gender" value="<?php echo $_SESSION['user']['gender'] ?>" required>
-                    <label for="gender">Gender</label>
-                </div>
-
-                <div class="form-floating mb-3">
+            <div class="form-floating mb-3">
                     <input class="form-control" id="basic-addon1" type="text" id="userName" name="userName" value="<?php echo $_SESSION['user']['userName'] ?>" required>
                     <label for="userName">User Name</label>
                 </div>
@@ -59,6 +49,16 @@ include "header.php";
                 <div class="form-floating mb-3">
                     <input class="form-control" id="basic-addon1" type="mail" id="userEmail" name="userEmail" value="<?php echo $_SESSION['user']['userEmail'] ?>" required>
                     <label for="userEmail">User Email</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="date" id="birthDate" name="birthDate" value="<?php echo $_SESSION['user']['birthDate'] ?>" required>
+                    <label for="birthDate">Birth Date</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input class="form-control" id="basic-addon1" type="text" id="gender" name="gender" value="<?php echo $_SESSION['user']['gender'] ?>" required>
+                    <label for="gender">Gender</label>
                 </div>
 
                 <div class="form-floating mb-3">

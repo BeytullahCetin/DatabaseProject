@@ -15,9 +15,9 @@ if (mysqli_query($conn, $query)) {
     if (mysqli_query($conn, $query)) {
         header("Location: apartment.php?succesfullyUpdate");
     } else {
-        echo "An error occured1!";
+        header("Location: apartment.php?error");
     }
 
 } else {
-    echo "An error occured2!";
+    header("Location: apartment.php?error");
 }

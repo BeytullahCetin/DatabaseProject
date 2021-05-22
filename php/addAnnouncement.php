@@ -22,13 +22,14 @@ include "header.php";
 
         <div>
             <label for="exampleInputEmail1"> Announcement Color </label>
-            <select class="form-select" aria-label="Default select example" name="color">
-                <option value="red">red</option>
-                <option value="green">green</option>
-                <option value="yellow">yellow</option>
-                <option value="black">black</option>
+            <select class="form-select " aria-label="Default select example" name="color">
+                <option class="bg-danger" value="red">Red</option>
+                <option class="bg-success" value="green">Green</option>
+                <option class="bg-warning" value="yellow">Yellow</option>
+                <option class="bg-dark text-light" value="black">Black</option>
             </select>
         </div>
+        
         <div class="form-group my-3">
             <label for="exampleInputEmail1">Announcement Title</label>
             <input class="form-control" required type="text" id="announcementTitle" name="announcementTitle" required=''>

@@ -111,7 +111,7 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                    <div class="accordion-body">
+                    <div class="accordion-body p-0">
                     <table class="table table-dark table-striped">
                             <thead>
                                 <tr>
@@ -154,7 +154,7 @@ echo "<script type='text/javascript' src='https://www.gstatic.com/charts/loader.
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                    <div class="accordion-body">
+                    <div class="accordion-body p-0">
                     <table class="table table-dark table-striped">
                             <thead>
                                 <tr>

@@ -12,7 +12,7 @@ include "header.php";
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne">
-                <div class="accordion-body">
+                <div class="accordion-body p-0 m-0">
                     <table class="table table-dark table-striped">
                         <thead>
                             <tr>
@@ -71,36 +71,6 @@ include "header.php";
                 </div>
             </div>
         </div>
-
-        <div class="accordion-item">
-            <h2 class="accordion-header" id="headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Old Users
-                </button>
-            </h2>
-            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo">
-                <div class="accordion-body">
-                    <table class="table table-dark table-striped">
-                        <thead>
-                            <tr>
-
-                                <th scope="col">Name</th>
-                                <th scope="col">Surname</th>
-                                <th scope="col">Number</th>
-                                <th scope="col">Number2</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Arrival Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-
-
 
     </div>
 

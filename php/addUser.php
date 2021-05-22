@@ -20,67 +20,71 @@ include "dbconn2.php";
             }
         }
         ?>
-        <form class="was-validated" action="addUserDB.php" method="POST">
 
-            <div class="label">
+        <div class="container col-md-6 my-5">
 
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="date" id="birthDate" name="birthDate" required>
-                    <label for="birthDate">Birth Date</label>
+            <form class="was-validated" action="addUserDB.php" method="POST">
+
+                <div class="label">
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="date" id="birthDate" name="birthDate" required>
+                        <label for="birthDate">Birth Date</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select name="gender" id="gender" class="form-control" required>
+                            <option value='male'>Male</option>
+                            <option selected value='female'>Female</option>
+                        </select>
+                        <label for="gender">Gender</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <select name="isAdmin" id="isAdmin" class="form-control" required>
+                            <option value='admin'>Admin</option>
+                            <option selected value='user'>User</option>
+                        </select>
+                        <label for="isAdmin">Role</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="text" id="userName" name="userName" required>
+                        <label for="userName">User Name</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="text" id="userSurname" name="userSurname" required>
+                        <label for="userSurname">User Surname</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="tel" id="userGSM" name="userGSM" required>
+                        <label for="userGSM">User GSM - 1</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="tel" id="userGSM_2" name="userGSM_2" required>
+                        <label for="userGSM_2">User GSM - 2</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="mail" id="userEmail" name="userEmail" required>
+                        <label for="userEmail">User Email</label>
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="basic-addon1" type="password" id="password" name="password" required>
+                        <label for="password">User Password</label>
+                    </div>
                 </div>
 
-                <div class="form-floating mb-3">
-                    <select name="gender" id="gender" class="form-control" required>
-                        <option value='male'>Male</option>
-                        <option selected value='female'>Female</option>
-                    </select>
-                    <label for="gender">Gender</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <select name="isAdmin" id="isAdmin" class="form-control" required>
-                        <option value='admin'>Admin</option>
-                        <option selected value='user'>User</option>
-                    </select>
-                    <label for="isAdmin">Role</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="text" id="userName" name="userName" required>
-                    <label for="userName">User Name</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="text" id="userSurname" name="userSurname" required>
-                    <label for="userSurname">User Surname</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM" name="userGSM" required>
-                    <label for="userGSM">User GSM - 1</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="tel" id="userGSM_2" name="userGSM_2" required>
-                    <label for="userGSM_2">User GSM - 2</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="mail" id="userEmail" name="userEmail" required>
-                    <label for="userEmail">User Email</label>
-                </div>
-
-                <div class="form-floating mb-3">
-                    <input class="form-control" id="basic-addon1" type="password" id="password" name="password" required>
-                    <label for="password">User Password</label>
-                </div>
-            </div>
-
-            <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
-            <label for="submit"></label>
-            <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" required>
-            <label for="reset"></label>
-        </form>
+                <input type="submit" name="submit" id="submit" class="btn btn btn-primary me-md-2 btn-lg" required>
+                <label for="submit"></label>
+                <input type="reset" name="reset" id="reset" class="btn btn btn-danger me-md-2 btn-lg" required>
+                <label for="reset"></label>
+            </form>
+        </div>
 
 
     </div>

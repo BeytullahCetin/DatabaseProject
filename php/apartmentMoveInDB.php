@@ -12,6 +12,6 @@ $query = "INSERT INTO userflat (userID, flatID, entryDate) VALUES ($userID, $fla
 if(mysqli_query($conn, $query)){
     header("Location: apartment.php?succesfullyMoveIn");
 }else{
-    echo "An error occured!";
+    header("Location: apartment.php?error");
 }
 ?>

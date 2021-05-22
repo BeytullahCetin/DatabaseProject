@@ -5,10 +5,21 @@ include "header.php";
 <div class="container col-md-8 my-5">
 
     <?php if (isset($_GET['succesfullyMoveIn'])) { ?>
-        <p class="text-success text-center">Succesfully Move In</p>
+        <div class="alert alert-success" role="alert">
+            Succesfully Move In
+        </div>
     <?php } ?>
+
     <?php if (isset($_GET['succesfullyMoveOut'])) { ?>
-        <p class="text-success text-center">Succesfully Move Out</p>
+        <div class="alert alert-success" role="alert">
+            Succesfully Move Out
+        </div>
+    <?php } ?>
+
+    <?php if (isset($_GET['error'])) { ?>
+        <div class="alert alert-danger" role="alert">
+            Error occured!
+        </div>
     <?php } ?>
 
     <table class="table table-dark table-striped">

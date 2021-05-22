@@ -11,6 +11,6 @@ $query = "UPDATE userFlat SET exitDate = '$exitDate' WHERE userFlatID = $userFla
 if(mysqli_query($conn, $query)){
     header("Location: apartment.php?succesfullyMoveOut");
 }else{
-    echo "An error occured!";
+    header("Location: apartment.php?error");
 }
 ?>
