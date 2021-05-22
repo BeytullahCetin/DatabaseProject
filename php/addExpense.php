@@ -2,7 +2,10 @@
 include "header.php";
 ?>
 
-<div class="container col-md-4 my-5">
+<div class="container col-md-4 my-4">
+
+<h1 class="text-center">Add Expense</h1>
+            <hr>
 
     <form action="addExpenseDB.php" method="POST">
 

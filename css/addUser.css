@@ -5,10 +5,6 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.main-item {
-  margin: 2.5% 15%;
-  padding: 1%;
-}
 .buttons{
   flex-direction: row-reverse;
   flex-wrap: wrap;

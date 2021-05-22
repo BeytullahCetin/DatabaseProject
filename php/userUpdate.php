@@ -35,8 +35,8 @@ include "dbconn2.php";
 
             <div class="container col-md-6">
 
-            <h1 class="text-center">Add User</h1>
-            <hr>
+                <h1 class="text-center">Update User</h1>
+                <hr>
 
                 <form class="was-validated" action="" method="POST">
                     <div class="label">
@@ -72,16 +72,19 @@ include "dbconn2.php";
                         </div>
 
                         <div class="form-floating mb-3">
-                            <input class="form-control" id="basic-addon1" type="text" id="gender" name="gender" value="<?php echo $pullinfo['gender'] ?>" required>
+                            <select name="gender" id="gender" class="form-control" required>
+                                <option <?php if ($pullinfo['gender'] == "male") echo "selected"; ?> value='male'>Male</option>
+                                <option <?php if ($pullinfo['gender'] == "female") echo "selected"; ?> value='female'>Female</option>
+                            </select>
                             <label for="gender">Gender</label>
                         </div>
 
                         <div class="form-floating mb-3">
                             <select class="form-select" name="isAdmin" id="isAdmin" value="<?php echo  $pullinfo['isAdmin'] ?>" required>
-                                <option value="admin">Admin</option>
-                                <option value="user">User</option>
+                                <option <?php if ($pullinfo['isAdmin'] == "admin") echo "selected"; ?> value="admin">Admin</option>
+                                <option <?php if ($pullinfo['isAdmin'] == "user") echo "selected"; ?> value="user">User</option>
                             </select>
-                            <label for="isAdmin">Authentication</label>
+                            <label for="isAdmin">Role</label>
                         </div>
 
                         <div class="d-grid gap-2 d-md-flex justify-content-md-center">

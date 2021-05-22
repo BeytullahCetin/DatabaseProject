@@ -2,7 +2,10 @@
 include "header.php";
 ?>
 
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Apartment</h1>
+            <hr>
 
     <?php if (isset($_GET['succesfullyMoveIn'])) { ?>
         <div class="alert alert-success" role="alert">

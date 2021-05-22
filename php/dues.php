@@ -2,7 +2,10 @@
 include "header.php";
 ?>
 
-<div class="container col-md-8 my-5">
+<div class="container col-md-8 my-4">
+
+<h1 class="text-center">Due Update</h1>
+            <hr>
 
 <?php if(isset($_GET['deleteSuccesfull'])){
 ?>

@@ -16,7 +16,10 @@ include "header.php";
 </script>
 
 
-<div class="container col-md-4 my-5">
+<div class="container col-md-4 my-4">
+
+<h1 class="text-center">Add Announcement</h1>
+            <hr>
 
     <form action="" method="POST">
 

@@ -4,7 +4,10 @@ include "header.php";
 $myDate = date("Y-m-d");
 ?>
 
-<div class="container col-md-4 my-5">
+<div class="container col-md-4 my-4">
+
+<h1 class="text-center">Add Due</h1>
+            <hr>
 
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
