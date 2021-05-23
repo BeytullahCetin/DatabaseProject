@@ -12,7 +12,7 @@ if ($kont) {
     header("Location:complaint.php?status=successfull");
     exit();
 } else {
-    header("Location:complaint.phpstatus=fail");
+    header("Location:complaint.php?status=fail");
     exit();
 }
 }

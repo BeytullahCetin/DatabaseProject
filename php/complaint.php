@@ -27,6 +27,7 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
                     <th>Number</th>
                     <th>Name</th>
                     <th>Surname</th>
+                    <th>Flat</th>
                     <th>GSM</th>
                     <th>Complaint Title </th>
                     <th>Complaint</th>
@@ -45,6 +46,7 @@ if ($_SESSION['user']['isAdmin'] == "admin") { ?>
                         <td><?php echo $sayı; ?></td>
                         <td><?php echo $bilgileriçek['userName']; ?></td>
                         <td><?php echo $bilgileriçek['userSurname']; ?></td>
+                        <td><?php echo $bilgileriçek['flatID'] ?></td>
                         <td><?php echo $bilgileriçek['userGSM']; ?></td>
                         <td><?php echo $bilgileriçek['complaintTitle']; ?></td>
                         <td><?php echo $bilgileriçek['complaintMessage']; ?></td>
@@ -145,7 +147,7 @@ if (isset($_POST['submit'])) {
 		userID=:userID,
 		complaintTitle=:complaintTitle,
 		complaintMessage=:complaintMessage,
-        complaintFlat=:complaintFlat,
+        flatID=:flatID,
 		complaintDate=:complaintDate
 	");
 
@@ -153,7 +155,7 @@ if (isset($_POST['submit'])) {
         'userID' => $userID,
         'complaintTitle' => $complaintTitle,
         'complaintMessage' => $complaintMessage,
-        'complaintFlat' => $complaintFlat,
+        'flatID' => $complaintFlat,
         'complaintDate' => $complaintDate
     ));
 
@@ -162,7 +164,7 @@ if (isset($_POST['submit'])) {
         header("Location:complaint.php?status=successfull");
         exit();
     } else {
-        header("Location:complaint.php??status=fail");
+        header("Location:complaint.php?status=fail");
         exit();
     }
 }
