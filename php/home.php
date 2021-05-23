@@ -34,8 +34,7 @@ include "header.php";
 				?>
 
 
-
-					<div class="carousel-item" style="color: white; background-color:<?php echo $color ?>;">
+					<div class="carousel-item" style="color: <?php if($color=='yellow')echo 'black'; else echo 'white';  ?> ; background-color:<?php echo $color ?>;">
 						<div>
 							<h2>
 								<p class="text-break"><?php echo $bilgileriçek['announcementText']; ?></p>
