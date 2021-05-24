@@ -33,7 +33,7 @@ $due = mysqli_fetch_array(mysqli_query($conn, $query));
         </div>
 
         <div class="d-grid gap-2 mb-3">
-            <input type="submit" class="btn btn-primary" id="everyoneDueSubmit" name="everyoneDueSubmit">
+            <input type="submit" class="btn btn-primary" id="everyoneDueSubmit" name="everyoneDueSubmit" value="Update">
         </div>
 
     </form>

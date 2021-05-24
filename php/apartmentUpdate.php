@@ -35,7 +35,7 @@ $userFlatID = $_POST['userFlatID'];
         </div>
 
         <div class="d-grid gap-2 my-3">
-            <input type="submit" class="btn btn-primary" id="apartmentMoveInSubmit" name="apartmentMoveInSubmit">
+            <input type="submit" class="btn btn-primary" id="apartmentMoveInSubmit" name="apartmentMoveInSubmit" value="Update">
         </div>
 
     </form>

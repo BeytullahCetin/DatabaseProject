@@ -40,7 +40,7 @@ $myDate = date("Y-m-d");
                 </div>
 
                 <div class="d-grid gap-2 mb-3">
-                    <input type="submit" class="btn btn-primary" id="everyoneDueSubmit" name="everyoneDueSubmit">
+                    <input type="submit" class="btn btn-primary" id="everyoneDueSubmit" name="everyoneDueSubmit" value="Add">
                 </div>
 
             </form>
@@ -83,7 +83,7 @@ $myDate = date("Y-m-d");
                 </div>
 
                 <div class="d-grid gap-2 my-3">
-                    <input type="submit" class="btn btn-primary" id="personDueSubmit" name="personDueSubmit">
+                    <input type="submit" class="btn btn-primary" id="personDueSubmit" name="personDueSubmit" value="Add">
                 </div>
 
             </form>
