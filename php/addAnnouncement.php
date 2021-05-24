@@ -44,7 +44,7 @@ include "header.php";
         </div>
 
         <div class="d-grid gap-2 mb-3">
-            <input type="submit" class="btn btn-primary" onclick="formKontrol()" id="announcement" name="submit">
+            <input type="submit" class="btn btn-primary" onclick="formKontrol()" id="announcement" name="submit" value="Add">
         </div>
 
     </form>

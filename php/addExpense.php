@@ -28,7 +28,7 @@ include "header.php";
         </div>
 
         <div class="d-grid gap-2 mb-3">
-            <input type="submit" class="btn btn-primary" id="expenseSubmit" name="expenseSubmit">
+            <input type="submit" class="btn btn-primary" id="expenseSubmit" name="expenseSubmit" value="Add">
         </div>
 
     </form>
