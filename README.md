@@ -1,5 +1,5 @@
 <h1>DatabaseProject</h1>
-<p>An apartment management website for Database Management lecuture</p>
+<p>An apartment management website for Database Management lecture</p>
 <br>
 <h2>Authors</h2>
 <ul>
